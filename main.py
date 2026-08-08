@@ -381,6 +381,8 @@ def main() -> int:
         _log("flightwatch: re-ranking cached fares (no network queries)\n")
         options = rerank_from_cache()
     else:
+        # One clock for the whole scan, covering every phase.
+        search.begin_scan()
         _log(f"flightwatch: tier {args.tier} ({len(origins)} origins), "
              f"mode={args.mode}, dest={config.DESTINATIONS}")
         _log(f"window {config.EARLIEST_DEPART} .. {config.LATEST_RETURN}, "

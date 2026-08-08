@@ -60,6 +60,32 @@ def set_rate(rate_per_sec: float) -> None:
     _limiter = _RateLimiter(rate_per_sec)
 
 
+# --------------------------------------------------------------- scan deadline
+# Module-level, set ONCE per scan. It previously lived inside parallel(), which
+# meant every phase got its own fresh 90 minutes -- four phases, so a worst
+# case of six hours from something documented as a 90-minute ceiling. A budget
+# that resets whenever you spend it is not a budget.
+_scan_started_at: float | None = None
+
+
+def begin_scan() -> None:
+    """Start the whole-scan clock. Call once, before the first phase."""
+    global _scan_started_at
+    _scan_started_at = time.monotonic()
+
+
+def elapsed_min() -> float:
+    if _scan_started_at is None:
+        return 0.0
+    return (time.monotonic() - _scan_started_at) / 60
+
+
+def deadline_exceeded() -> bool:
+    if _scan_started_at is None:
+        return False
+    return elapsed_min() > config.SCAN_DEADLINE_MIN
+
+
 CHROME_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
              "(KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36")
 
@@ -520,7 +546,6 @@ def parallel(tasks: Sequence[tuple], fn: Callable,
     stats = ScanStats()
     done = 0
     total = len(tasks)
-    deadline = time.monotonic() + config.SCAN_DEADLINE_MIN * 60
     aborted = False
 
     with ThreadPoolExecutor(max_workers=config.MAX_WORKERS) as ex:
@@ -528,14 +553,15 @@ def parallel(tasks: Sequence[tuple], fn: Callable,
         for fut in as_completed(futures):
             done += 1
             task = futures[fut]
-            if not aborted and time.monotonic() > deadline:
+            if not aborted and deadline_exceeded():
                 # Stop queueing more work and return what we have. Partial
                 # results clearly labelled beat an unbounded run every time.
                 aborted = True
                 for pending in futures:
                     pending.cancel()
-                print(f"\n  !! scan deadline ({config.SCAN_DEADLINE_MIN} min) "
-                      f"hit at {done}/{total}; returning partial results")
+                print(f"\n  !! whole-scan deadline ({config.SCAN_DEADLINE_MIN} "
+                      f"min) hit at {elapsed_min():.0f} min, {done}/{total} of "
+                      f"this phase; returning partial results")
             try:
                 got = fut.result()
                 quotes.extend(got)
