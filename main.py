@@ -366,6 +366,17 @@ def main() -> int:
 
     options: list[strategy.TripOption] = []
 
+    # Prove the network works before committing to thousands of queries.
+    # Without this, a sandbox that blackholes google.com produces a silent
+    # multi-hour hang instead of an error anyone can act on.
+    if not args.rerank:
+        ok, msg = search.preflight()
+        if not ok:
+            _log(f"PREFLIGHT FAILED: {msg}")
+            notify.send_plain(f"**flightwatch could not run.** {msg}")
+            return 2
+        _log(f"preflight: {msg}\n")
+
     if args.rerank:
         _log("flightwatch: re-ranking cached fares (no network queries)\n")
         options = rerank_from_cache()

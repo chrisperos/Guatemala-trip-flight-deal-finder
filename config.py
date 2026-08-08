@@ -71,6 +71,16 @@ MAX_WORKERS = 8
 REQUEST_RETRIES = 3
 RETRY_BACKOFF_SEC = 3.0  # doubles each retry
 
+# Hard per-request timeout. fast-flights sets none of its own, so a host that
+# blackholes traffic instead of refusing it hangs forever. That is exactly how
+# a cloud sandbox on "Trusted" network access behaves toward google.com, and it
+# turned a 20-minute scan into a 2-hour zombie with no output and no error.
+REQUEST_TIMEOUT_SEC = 25.0
+
+# Whole-scan ceiling. Past this the scan stops and reports what it has rather
+# than running unbounded. Generous enough for tier 3 with both modes.
+SCAN_DEADLINE_MIN = 90
+
 # Measured ~19 q/s clean at 8 workers with zero refusals. This cap is polite
 # headroom, not a workaround: watch the "blocked" counter in the scan output
 # and only lower it if that number is actually climbing.

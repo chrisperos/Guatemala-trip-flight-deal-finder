@@ -18,6 +18,7 @@ from typing import Callable, Iterable, Sequence
 import threading
 
 from fast_flights import FlightQuery, Passengers, create_query, get_flights
+from fast_flights.integrations.base import FetchIntegration
 
 import config
 
@@ -53,6 +54,73 @@ _limiter = _RateLimiter(config.REQUESTS_PER_SECOND)
 def set_rate(rate_per_sec: float) -> None:
     global _limiter
     _limiter = _RateLimiter(rate_per_sec)
+
+
+class _TimeoutFetcher(FetchIntegration):
+    """fast-flights' own client, but with a timeout it otherwise never sets.
+
+    This is not a micro-optimisation. `fetch_flights_html` builds its primp
+    Client with no timeout at all, so a host that silently blackholes traffic
+    -- exactly what a cloud sandbox on "Trusted" network access does to
+    google.com -- makes every request hang forever rather than error. With
+    retries and 8 worker threads on top, a 20-minute scan became a 2-hour
+    zombie that produced no output and no error.
+
+    Using the library's own FetchIntegration hook rather than monkeypatching,
+    so a version bump can't silently undo it.
+    """
+
+    URL = "https://www.google.com/travel/flights"
+
+    def __init__(self, timeout: float, proxy: str | None = None):
+        self.timeout = timeout
+        self.proxy = proxy
+
+    def fetch_html(self, q, /) -> str:
+        from primp import Client
+        from fast_flights.querying import Query as _Q
+
+        client = Client(
+            impersonate="chrome_145", impersonate_os="macos", referer=True,
+            proxy=self.proxy, cookie_store=True,
+            timeout=self.timeout, connect_timeout=min(self.timeout, 10.0),
+        )
+        params = q.params() if isinstance(q, _Q) else {"q": q}
+        return client.get(self.URL, params=params).text
+
+
+_fetcher = _TimeoutFetcher(config.REQUEST_TIMEOUT_SEC, config.PROXY)
+
+
+def preflight() -> tuple[bool, str]:
+    """Prove the network is reachable before committing to thousands of queries.
+
+    Fails in seconds with a usable message instead of grinding for hours.
+    """
+    from datetime import date, timedelta
+
+    probe = date.today() + timedelta(days=45)
+    q = create_query(
+        flights=[FlightQuery(date=probe.isoformat(), from_airport="MIA",
+                             to_airport="GUA")],
+        trip="one-way", passengers=Passengers(adults=1),
+        currency="USD", language="en-US",
+    )
+    try:
+        res = get_flights(q, integration=_fetcher)
+    except Exception as e:  # noqa: BLE001
+        return False, (
+            f"cannot reach Google Flights ({type(e).__name__}: {str(e)[:160]}). "
+            "If this is a Claude cloud session, the environment's Network "
+            "access is almost certainly set to 'Trusted', which allows only "
+            "package registries and GitHub. Set it to 'Full', or 'Custom' "
+            "with www.google.com and discord.com allowed."
+        )
+    if not list(res):
+        return False, ("reached Google Flights but got zero itineraries on a "
+                       "route that should always have them (MIA->GUA). The "
+                       "page shape may have changed, or we are being blocked.")
+    return True, "network ok"
 
 
 # --------------------------------------------------------------------- models
@@ -243,7 +311,7 @@ def _run_with_retry(query, label: str):
     for attempt in range(config.REQUEST_RETRIES):
         try:
             _limiter.acquire()
-            return get_flights(query, proxy=config.PROXY)
+            return get_flights(query, integration=_fetcher)
         except Exception as e:  # noqa: BLE001 - upstream raises bare Exceptions
             last = e
             if _classify(e) == "empty":
@@ -370,12 +438,22 @@ def parallel(tasks: Sequence[tuple], fn: Callable,
     stats = ScanStats()
     done = 0
     total = len(tasks)
+    deadline = time.monotonic() + config.SCAN_DEADLINE_MIN * 60
+    aborted = False
 
     with ThreadPoolExecutor(max_workers=config.MAX_WORKERS) as ex:
         futures = {ex.submit(fn, *t): t for t in tasks}
         for fut in as_completed(futures):
             done += 1
             task = futures[fut]
+            if not aborted and time.monotonic() > deadline:
+                # Stop queueing more work and return what we have. Partial
+                # results clearly labelled beat an unbounded run every time.
+                aborted = True
+                for pending in futures:
+                    pending.cancel()
+                print(f"\n  !! scan deadline ({config.SCAN_DEADLINE_MIN} min) "
+                      f"hit at {done}/{total}; returning partial results")
             try:
                 got = fut.result()
                 quotes.extend(got)
