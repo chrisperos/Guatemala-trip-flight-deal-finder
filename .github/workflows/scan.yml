@@ -1,0 +1,52 @@
+# Optional pure-Python safety net.
+#
+# The Claude cloud routine is the primary scanner -- it scans, researches
+# baggage policy, re-ranks, and explains. This workflow does the scanning half
+# only, with no reasoning, and exists for two reasons: it is free, and it keeps
+# building price history if the routine is ever disabled or its IP gets blocked.
+#
+# Left on manual-dispatch by default so only ONE thing writes to data/ and the
+# two never collide on a git push. To run it on a schedule, uncomment the
+# `schedule:` block below AND turn off the cloud routine's own commit step.
+#
+# Heads-up: GitHub runners use datacenter IPs, which Google refuses far more
+# readily than a home connection. Watch the "blocked" counter in the log; if it
+# is high, this path is not viable and the routine is the one to rely on.
+
+name: flight scan
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "11 12 * * *"   # 12:11 UTC daily = 05:11 America/Denver (MST)
+
+permissions:
+  contents: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Scan
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          DISCORD_MENTION_USER_ID: ${{ secrets.DISCORD_MENTION_USER_ID }}
+        run: python main.py --tier 1 --mode oneway
+
+      - name: Commit results
+        run: |
+          git config user.name  "flightwatch-bot"
+          git config user.email "flightwatch-bot@users.noreply.github.com"
+          git add data/
+          git diff --staged --quiet || git commit -m "scan $(date -u +%F)"
+          git push

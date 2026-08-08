@@ -1,0 +1,112 @@
+{
+  "air canada": {
+    "airline": "Air Canada",
+    "checked_bag_usd": 70,
+    "carryon_free": true,
+    "carryon_usd": 0,
+    "personal_item_free": true,
+    "fare_class": "economy basic/standard",
+    "notes": "NOT YET VERIFIED for US-Guatemala routings. Air Canada appears only on connections via YYZ/YUL; a US-GUA itinerary routed through Canada also means clearing Canadian transit requirements. Verify before trusting.",
+    "source_url": "",
+    "verified_on": ""
+  },
+  "american": {
+    "airline": "American Airlines",
+    "checked_bag_usd": 50,
+    "carryon_free": true,
+    "carryon_usd": 0,
+    "personal_item_free": true,
+    "fare_class": "basic economy",
+    "notes": "First checked bag to Central America (except Panama) is $45 online / $50 airport; Basic Economy adds $5, so $50 online. Per person, EACH WAY. Carry-on plus personal item are free on ALL fare types including Basic Economy. Fees updated for tickets issued on/after 2026-05-18.",
+    "source_url": "https://www.aa.com/i18n/travel-info/baggage/checked-baggage-policy.html",
+    "verified_on": "2026-08-07"
+  },
+  "avianca": {
+    "airline": "Avianca",
+    "checked_bag_usd": 50,
+    "carryon_free": true,
+    "carryon_usd": 0,
+    "personal_item_free": true,
+    "fare_class": "Light (international Americas)",
+    "notes": "Light/XS/S fares include NO free checked bag; first bag ~$50 added online 48h+ before departure, rising to ~$120 at the airport. Since 2026-01-27 Basic includes a free 10kg carry-on on international routes. Book bags online early - the airport price is more than double.",
+    "source_url": "https://www.avianca.com/en/my-booking/prepare-your-trip/baggage",
+    "verified_on": "2026-08-07"
+  },
+  "copa": {
+    "airline": "COPA Airlines",
+    "checked_bag_usd": 30,
+    "carryon_free": true,
+    "carryon_usd": 0,
+    "personal_item_free": true,
+    "fare_class": "Economy Basic",
+    "notes": "STRONG VALUE. Economy Basic has no free checked bag but an added bag is only ~$30 online (vs $45-50 on US legacy carriers). Economy Classic INCLUDES one free checked bag - if Classic costs less than ~$30 more than Basic, take Classic. Free 10kg carry-on AND personal item on every fare including Basic. Checked allowance 23kg/50lb.",
+    "source_url": "https://upgradedpoints.com/travel/airlines/copa-airlines-baggage-fees/",
+    "verified_on": "2026-08-07"
+  },
+  "delta": {
+    "airline": "Delta",
+    "checked_bag_usd": 45,
+    "carryon_free": true,
+    "carryon_usd": 0,
+    "personal_item_free": true,
+    "fare_class": "basic economy",
+    "notes": "First checked bag US-Central America $45, second $55; can vary by specific route. Delta permits a full carry-on plus personal item on Basic Economy. Re-verify the carry-on rule at booking, it is the least well sourced field here.",
+    "source_url": "https://www.delta.com/us/en/baggage/overview",
+    "verified_on": "2026-08-07"
+  },
+  "frontier": {
+    "airline": "Frontier",
+    "checked_bag_usd": 63,
+    "carryon_free": false,
+    "carryon_usd": 85,
+    "personal_item_free": true,
+    "fare_class": "Basic (Econ)",
+    "notes": "WATCH THIS ONE. Checked bag ~$53-63 if added during booking, and it RISES at check-in, at the counter, and at the gate. Carry-on is NOT free: $53-117 depending on route/date/when purchased. Only the personal item (14x18x8in) is free. A cheap Frontier fare can lose to a pricier legacy fare once a checked bag is added. Fees are route- and date-specific: use Frontier's own bag price checker for the exact itinerary before booking.",
+    "source_url": "https://www.flyfrontier.com/travel/travel-info/bag-options/",
+    "verified_on": "2026-08-07"
+  },
+  "jetblue": {
+    "airline": "JetBlue",
+    "checked_bag_usd": 49,
+    "carryon_free": true,
+    "carryon_usd": 0,
+    "personal_item_free": true,
+    "fare_class": "Blue Basic",
+    "notes": "First checked bag $39 prepaid online off-peak, $49 peak - December holidays are peak, so assume $49. JetBlue now allows a free full carry-on plus personal item on EVERY fare including Blue Basic.",
+    "source_url": "https://www.jetblue.com/at-the-airport/baggage-information",
+    "verified_on": "2026-08-07"
+  },
+  "spirit": {
+    "airline": "Spirit (DEFUNCT)",
+    "checked_bag_usd": 999,
+    "carryon_free": false,
+    "carryon_usd": 999,
+    "personal_item_free": true,
+    "fare_class": "n/a",
+    "notes": "Spirit Airlines CEASED OPERATIONS on 2026-05-02. Priced at 999 so any stale Spirit inventory sorts to the bottom rather than surfacing as a fake bargain.",
+    "source_url": "https://www.foxnews.com/travel/spirit-airlines-raising-carry-on-bag-fee-to-100",
+    "verified_on": "2026-08-07"
+  },
+  "united": {
+    "airline": "United",
+    "checked_bag_usd": 45,
+    "carryon_free": false,
+    "carryon_usd": 0,
+    "personal_item_free": true,
+    "fare_class": "basic economy",
+    "notes": "First checked bag $45 online for US-Central America ($70 range at airport / on some Basic fares). IMPORTANT: Guatemala counts as SHORT-HAUL international, where United Basic Economy allows a PERSONAL ITEM ONLY - no full-size carry-on. The free-carry-on rule people cite applies to transatlantic/transpacific/South America, not Central America. carryon_usd is 0 because it cannot be bought on Basic; you must buy up to a Standard Economy fare.",
+    "source_url": "https://www.nerdwallet.com/travel/learn/united-airlines-bag-fees-how-they-work-and-how-to-avoid-them",
+    "verified_on": "2026-08-07"
+  },
+  "volaris": {
+    "airline": "Volaris",
+    "checked_bag_usd": 55,
+    "carryon_free": false,
+    "carryon_usd": 50,
+    "personal_item_free": true,
+    "fare_class": "Zero",
+    "notes": "DISQUALIFIER RISK: Volaris checked allowance is commonly 33lb/15kg, NOT 50lb. You require 0-50lb, so a Volaris fare may not actually satisfy the requirement without buying extra weight. Zero fare includes personal item only; carry-on ~$50. Verify the weight limit for the specific fare before booking.",
+    "source_url": "https://cms.volaris.com/en/travel-info/baggage-policy/",
+    "verified_on": "2026-08-07"
+  }
+}
