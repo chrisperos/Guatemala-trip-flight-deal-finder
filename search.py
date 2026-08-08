@@ -15,7 +15,11 @@ from dataclasses import dataclass, field, asdict
 from datetime import date as _date, datetime, timedelta
 from typing import Callable, Iterable, Sequence
 
+import gzip
 import threading
+import urllib.parse
+import urllib.request
+import zlib
 
 from fast_flights import FlightQuery, Passengers, create_query, get_flights
 from fast_flights.integrations.base import FetchIntegration
@@ -56,6 +60,63 @@ def set_rate(rate_per_sec: float) -> None:
     _limiter = _RateLimiter(rate_per_sec)
 
 
+CHROME_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+             "(KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36")
+
+
+class _PlainFetcher(FetchIntegration):
+    """stdlib urllib with a Chrome User-Agent. No TLS impersonation at all.
+
+    This is the default, and the reason is worth recording. fast-flights ships
+    a primp client that forges a real browser's TLS fingerprint. Anthropic's
+    cloud sandbox routes egress through a proxy that RESETS forged TLS
+    handshakes -- every impersonation profile, against every host including
+    discord.com. Two scheduled runs died on it.
+
+    Measured side by side against the impersonating client on the same query:
+    identical results, 5 itineraries, same cheapest fare. Impersonation buys
+    nothing here. The ONLY thing that matters is the User-Agent header -- with
+    Python's default UA, Google serves a stripped page the parser cannot read,
+    which is precisely the "200 OK but no flight data" symptom reported from
+    the sandbox.
+    """
+
+    URL = "https://www.google.com/travel/flights"
+
+    def __init__(self, timeout: float, proxy: str | None = None):
+        self.timeout = timeout
+        self.proxy = proxy
+
+    def _opener(self):
+        if self.proxy:
+            handler = urllib.request.ProxyHandler({"http": self.proxy,
+                                                   "https": self.proxy})
+            return urllib.request.build_opener(handler)
+        return urllib.request.build_opener()
+
+    def fetch_html(self, q, /) -> str:
+        from fast_flights.querying import Query as _Q
+
+        params = q.params() if isinstance(q, _Q) else {"q": q}
+        url = f"{self.URL}?{urllib.parse.urlencode(params)}"
+        req = urllib.request.Request(url, headers={
+            "User-Agent": CHROME_UA,
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,"
+                      "image/avif,image/webp,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9",
+            "Accept-Encoding": "gzip, deflate",
+            "Upgrade-Insecure-Requests": "1",
+        })
+        with self._opener().open(req, timeout=self.timeout) as resp:
+            raw = resp.read()
+            enc = (resp.headers.get("Content-Encoding") or "").lower()
+        if "gzip" in enc:
+            raw = gzip.decompress(raw)
+        elif "deflate" in enc:
+            raw = zlib.decompress(raw, -zlib.MAX_WBITS)
+        return raw.decode("utf-8", "replace")
+
+
 class _TimeoutFetcher(FetchIntegration):
     """fast-flights' own client, but with a timeout it otherwise never sets.
 
@@ -89,38 +150,59 @@ class _TimeoutFetcher(FetchIntegration):
         return client.get(self.URL, params=params).text
 
 
-_fetcher = _TimeoutFetcher(config.REQUEST_TIMEOUT_SEC, config.PROXY)
+_fetcher = _PlainFetcher(config.REQUEST_TIMEOUT_SEC, config.PROXY)
 
 
-def preflight() -> tuple[bool, str]:
-    """Prove the network is reachable before committing to thousands of queries.
-
-    Fails in seconds with a usable message instead of grinding for hours.
-    """
+def _probe_query():
     from datetime import date, timedelta
 
     probe = date.today() + timedelta(days=45)
-    q = create_query(
+    return create_query(
         flights=[FlightQuery(date=probe.isoformat(), from_airport="MIA",
                              to_airport="GUA")],
         trip="one-way", passengers=Passengers(adults=1),
         currency="USD", language="en-US",
     )
-    try:
-        res = get_flights(q, integration=_fetcher)
-    except Exception as e:  # noqa: BLE001
-        return False, (
-            f"cannot reach Google Flights ({type(e).__name__}: {str(e)[:160]}). "
-            "If this is a Claude cloud session, the environment's Network "
-            "access is almost certainly set to 'Trusted', which allows only "
-            "package registries and GitHub. Set it to 'Full', or 'Custom' "
-            "with www.google.com and discord.com allowed."
-        )
-    if not list(res):
-        return False, ("reached Google Flights but got zero itineraries on a "
-                       "route that should always have them (MIA->GUA). The "
-                       "page shape may have changed, or we are being blocked.")
-    return True, "network ok"
+
+
+def preflight() -> tuple[bool, str]:
+    """Prove we can actually get flight data before firing thousands of queries.
+
+    Tries the plain fetcher first, then the TLS-impersonating one. Whichever
+    returns real itineraries becomes the fetcher for the whole scan, so the
+    same code works on a home connection and inside a sandbox that resets
+    forged TLS handshakes -- without anyone having to configure which.
+    """
+    global _fetcher
+
+    q = _probe_query()
+    attempts: list[str] = []
+
+    for name, cand in (("plain", _PlainFetcher(config.REQUEST_TIMEOUT_SEC,
+                                               config.PROXY)),
+                       ("impersonated", _TimeoutFetcher(config.REQUEST_TIMEOUT_SEC,
+                                                        config.PROXY))):
+        try:
+            res = list(get_flights(q, integration=cand))
+        except Exception as e:  # noqa: BLE001
+            attempts.append(f"{name}: {type(e).__name__}: {str(e)[:90]}")
+            continue
+        if not res:
+            attempts.append(f"{name}: connected but returned 0 itineraries "
+                            "(served a stripped page)")
+            continue
+        _fetcher = cand
+        return True, f"network ok via {name} fetcher ({len(res)} itineraries)"
+
+    return False, (
+        "could not retrieve flight data by any method. Attempts -- "
+        + " | ".join(attempts)
+        + ". If this is a Claude cloud session: set the environment's Network "
+          "access to 'Full' (or 'Custom' with www.google.com and discord.com). "
+          "If the network is already Full and the plain fetcher still returns "
+          "0 itineraries, Google is refusing this datacenter IP and the scan "
+          "needs to run elsewhere -- see the GitHub Actions workflow."
+    )
 
 
 # --------------------------------------------------------------------- models
