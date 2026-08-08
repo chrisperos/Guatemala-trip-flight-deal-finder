@@ -65,7 +65,7 @@ def _warn_if_degraded(stats: search.ScanStats) -> None:
 # ------------------------------------------------------------------- scanning
 
 def scan_oneway(origins: list[str], max_dates: int | None,
-                dead: dict) -> list[strategy.TripOption]:
+                dead: dict, no_resume: bool = False) -> list[strategy.TripOption]:
     deps = strategy.depart_dates()
     rets = strategy.return_dates()
     if max_dates:
@@ -82,19 +82,29 @@ def scan_oneway(origins: list[str], max_dates: int | None,
     if sk1 or sk2:
         _log(f"  skipped {sk1 + sk2} queries on known-dead routes")
 
-    _log(f"  outbound legs: {len(out_tasks)} queries")
-    t0 = time.time()
-    outbound, s1 = search.parallel(out_tasks, search.search_oneway,
-                                   on_progress=_progress)
-    _log(f"    -> {len(outbound)} quotes in {time.time()-t0:.0f}s")
-    _warn_if_degraded(s1)
+    def run_phase(label: str, ckpt: str, tasks):
+        """Run a phase, or restore it from a checkpoint if one survives.
 
-    _log(f"  return legs:   {len(in_tasks)} queries")
-    t0 = time.time()
-    inbound, s2 = search.parallel(in_tasks, search.search_oneway,
-                                  on_progress=_progress)
-    _log(f"    -> {len(inbound)} quotes in {time.time()-t0:.0f}s")
-    _warn_if_degraded(s2)
+        Checkpointing exists because a cloud container restart once destroyed a
+        complete 10-minute phase that had never been written to disk.
+        """
+        if not no_resume:
+            saved = store.load_checkpoint(ckpt)
+            if saved is not None:
+                _log(f"  {label}: resumed {len(saved)} quotes from checkpoint "
+                     f"(skipping {len(tasks)} queries)")
+                return saved, search.ScanStats(ok=len(saved))
+        _log(f"  {label}: {len(tasks)} queries")
+        t0 = time.time()
+        quotes, stats = search.parallel(tasks, search.search_oneway,
+                                        on_progress=_progress)
+        _log(f"    -> {len(quotes)} quotes in {time.time()-t0:.0f}s")
+        _warn_if_degraded(stats)
+        store.save_checkpoint(ckpt, quotes)
+        return quotes, stats
+
+    outbound, s1 = run_phase("outbound legs", "oneway_outbound", out_tasks)
+    inbound, s2 = run_phase("return legs", "oneway_inbound", in_tasks)
 
     deadroutes.update(dead, _ok_routes(outbound) + _ok_routes(inbound),
                       s1.empty_routes + s2.empty_routes)
@@ -358,6 +368,8 @@ def main() -> int:
     ap.add_argument("--rerank", action="store_true",
                     help="re-cost cached fares using the current baggage "
                          "policies; performs no network queries")
+    ap.add_argument("--no-resume", action="store_true",
+                    help="ignore phase checkpoints and rescan from scratch")
     args = ap.parse_args()
 
     origins = airports.origins_for_tier(args.tier)
@@ -390,7 +402,7 @@ def main() -> int:
 
         if args.mode in ("oneway", "both"):
             _log("[one-way legs, recombined]")
-            options += scan_oneway(origins, args.max_dates, dead)
+            options += scan_oneway(origins, args.max_dates, dead, args.no_resume)
         if args.mode in ("roundtrip", "both"):
             _log("[round-trip grid]")
             options += scan_roundtrip(origins, args.max_dates, dead)
@@ -421,6 +433,10 @@ def main() -> int:
     export_shortlist(short, meta)
     report = write_report(short, meta)
     _log("\n" + report)
+
+    # The scan produced a complete result, so the phase checkpoints have done
+    # their job and would otherwise be silently reused by tomorrow's run.
+    store.clear_checkpoints()
 
     if not args.no_history:
         store.append_history(short)

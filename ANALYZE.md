@@ -89,13 +89,38 @@ elsewhere). So the Denver premium is real and large. Track whether it closes.
 
 ## Procedure
 
-### 1. Scan
+### 1. Get today's data — prefer the data that already exists
+
+A GitHub Actions workflow scans daily at 16:20 UTC and commits the results,
+about 70 minutes before you run. **In almost every run the data is already
+there and you should not scan at all.**
 
 ```bash
 PY=$(command -v python3 || command -v python)
 "$PY" -m pip install -q -r requirements.txt
+git pull --rebase origin main
+"$PY" -c "import json,datetime as dt; d=json.load(open('data/shortlist.json')); \
+g=dt.datetime.fromisoformat(d['generated_at']); \
+age=(dt.datetime.now(dt.timezone.utc)-g).total_seconds()/3600; \
+print(f'shortlist is {age:.1f}h old, {len(d[\"options\"])} options')"
+```
+
+If it is **under 12 hours old, use it and skip to step 2.** That is the normal
+path, and it is why this run should take minutes rather than an hour.
+
+Only if the data is missing or older than 12 hours, scan yourself:
+
+```bash
 "$PY" main.py --tier 2 --mode both --no-notify
 ```
+
+Be aware of what you are taking on. That scan is ~18,700 queries over 30-50
+minutes, and this container has restarted mid-scan before and killed it. Phases
+now checkpoint as they complete, so **if it dies, just run the same command
+again** — it resumes from the last finished phase rather than starting over.
+Do not pass `--no-resume`, and do not lower the tier to make it finish sooner.
+If it dies twice, stop, report that the scan could not complete here, and note
+that GitHub Actions is the intended scanner.
 
 Resolve the interpreter this way rather than typing `python`. Most Linux
 containers ship `python3` with no bare `python`, and `pip` may not be on PATH

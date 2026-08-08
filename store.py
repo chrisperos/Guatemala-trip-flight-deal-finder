@@ -35,6 +35,64 @@ def _ensure_dir() -> None:
 
 RAW_CACHE = os.path.join(config.DATA_DIR, "raw_quotes.json.gz")
 
+# ------------------------------------------------------------- checkpoints
+# A cloud run completed phase 1 (5,965 queries, 10 minutes, zero blocked) and
+# then had its container restarted mid-phase-2. Every one of those quotes was
+# lost, because nothing touched disk until the whole scan finished. Phases now
+# checkpoint as they complete, so an interruption costs the current phase
+# rather than the entire run.
+
+CHECKPOINT_DIR = os.path.join(config.DATA_DIR, "checkpoints")
+CHECKPOINT_MAX_AGE_MIN = 240
+
+
+def _ckpt_path(name: str) -> str:
+    return os.path.join(CHECKPOINT_DIR, f"{name}.json.gz")
+
+
+def save_checkpoint(name: str, quotes) -> None:
+    import gzip
+    from dataclasses import asdict
+
+    os.makedirs(CHECKPOINT_DIR, exist_ok=True)
+    payload = {"saved_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+               "quotes": [asdict(q) for q in quotes]}
+    tmp = _ckpt_path(name) + ".tmp"
+    with gzip.open(tmp, "wt", encoding="utf-8") as fh:
+        json.dump(payload, fh)
+    os.replace(tmp, _ckpt_path(name))   # atomic: never a half-written file
+
+
+def load_checkpoint(name: str, max_age_min: int = CHECKPOINT_MAX_AGE_MIN):
+    """Return the phase's quotes if a recent checkpoint exists, else None."""
+    import gzip
+    from search import Leg, Quote
+
+    path = _ckpt_path(name)
+    if not os.path.exists(path):
+        return None
+    try:
+        with gzip.open(path, "rt", encoding="utf-8") as fh:
+            payload = json.load(fh)
+        saved = datetime.fromisoformat(payload["saved_at"])
+        age_min = (datetime.now(timezone.utc) - saved).total_seconds() / 60
+        if age_min > max_age_min:
+            return None
+        return [Quote(**dict(r, legs=[Leg(**l) for l in r.get("legs", [])]))
+                for r in payload.get("quotes", [])]
+    except (OSError, json.JSONDecodeError, EOFError, TypeError, ValueError, KeyError):
+        return None   # a corrupt checkpoint must never sink the run
+
+
+def clear_checkpoints() -> None:
+    if not os.path.isdir(CHECKPOINT_DIR):
+        return
+    for f in os.listdir(CHECKPOINT_DIR):
+        try:
+            os.remove(os.path.join(CHECKPOINT_DIR, f))
+        except OSError:
+            pass
+
 
 def save_raw_quotes(outbound, inbound) -> None:
     import gzip

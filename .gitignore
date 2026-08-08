@@ -8,6 +8,11 @@ venv/
 # add megabytes of churn per day for no benefit.
 data/raw_quotes.json.gz
 
+# Per-phase resume checkpoints. Transient, large, and only meaningful to the
+# machine mid-scan. They survive a container restart on the same filesystem,
+# which is the whole point, but they have no business in git.
+data/checkpoints/
+
 # Never commit the webhook URL -- it alone lets anyone post to your channel.
 .env
 secrets.py

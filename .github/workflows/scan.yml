@@ -1,38 +1,46 @@
-# Optional pure-Python safety net.
+# The scanner's real home.
 #
-# The Claude cloud routine is the primary scanner -- it scans, researches
-# baggage policy, re-ranks, and explains. This workflow does the scanning half
-# only, with no reasoning, and exists for two reasons: it is free, and it keeps
-# building price history if the routine is ever disabled or its IP gets blocked.
+# Why here and not in the Claude cloud routine: a routine run completed phase 1
+# cleanly (5,965 queries, blocked=0, 10 minutes) and was then killed mid-phase-2
+# by a CONTAINER RESTART. The scan was healthy; the environment simply is not
+# built to babysit a 40-minute background process. GitHub runners are: a 6-hour
+# job limit, no restarts, unrestricted egress, no TLS-inspecting proxy, free.
 #
-# Left on manual-dispatch by default so only ONE thing writes to data/ and the
-# two never collide on a git push. To run it on a schedule, uncomment the
-# `schedule:` block below AND turn off the cloud routine's own commit step.
+# So this workflow scans and commits the data. The Claude routine then reads
+# that committed data, researches baggage policy, re-ranks and explains --
+# minutes of work, and the part that has never failed.
 #
-# Heads-up: GitHub runners use datacenter IPs, which Google refuses far more
-# readily than a home connection. Watch the "blocked" counter in the log; if it
-# is high, this path is not viable and the routine is the one to rely on.
+# Required repo secret: DISCORD_WEBHOOK
+#   Settings -> Secrets and variables -> Actions -> New repository secret
 
 name: flight scan
 
 on:
   workflow_dispatch:
-  # schedule:
-  #   - cron: "11 12 * * *"   # 12:11 UTC daily = 05:11 America/Denver (MST)
+  schedule:
+    # 16:20 UTC daily, ~70 minutes ahead of the 17:30 UTC routine, so the
+    # routine always finds fresh data waiting for it.
+    - cron: "20 16 * * *"
 
 permissions:
   contents: write
 
+concurrency:
+  # Never let two scans race to commit the same data/ directory.
+  group: flight-scan
+  cancel-in-progress: false
+
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: pip
 
       - name: Install dependencies
         run: pip install -r requirements.txt
@@ -41,7 +49,7 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
           DISCORD_MENTION_USER_ID: ${{ secrets.DISCORD_MENTION_USER_ID }}
-        run: python main.py --tier 1 --mode oneway
+        run: python main.py --tier 2 --mode both
 
       - name: Commit results
         run: |
@@ -49,4 +57,15 @@ jobs:
           git config user.email "flightwatch-bot@users.noreply.github.com"
           git add data/
           git diff --staged --quiet || git commit -m "scan $(date -u +%F)"
+          # Another run may have pushed while we scanned; rebase rather than fail.
+          git pull --rebase --autostash origin main
           git push
+
+      - name: Report failure to Discord
+        if: failure()
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          [ -z "$DISCORD_WEBHOOK" ] && exit 0
+          curl -sS -H 'Content-Type: application/json' -X POST "$DISCORD_WEBHOOK" \
+            -d '{"username":"flightwatch","content":"**Scan failed in GitHub Actions.** No fresh data today; the routine will report yesterday'"'"'s numbers as stale. See the Actions tab for the log."}'
