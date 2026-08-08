@@ -92,8 +92,21 @@ elsewhere). So the Denver premium is real and large. Track whether it closes.
 ### 1. Scan
 
 ```bash
-pip install -q -r requirements.txt && python main.py --tier 2 --mode both --no-notify
+PY=$(command -v python3 || command -v python)
+"$PY" -m pip install -q -r requirements.txt
+"$PY" main.py --tier 2 --mode both --no-notify
 ```
+
+Resolve the interpreter this way rather than typing `python`. Most Linux
+containers ship `python3` with no bare `python`, and `pip` may not be on PATH
+even when the interpreter is — `"$PY" -m pip` works either way. Use `"$PY"` for
+every later command in this file too, including `--rerank`.
+
+The scan begins with a preflight probe. If it prints `PREFLIGHT FAILED`, stop:
+the network is blocked, not the code. That means this environment's **Network
+access** is set to `Trusted` (package registries and GitHub only) and needs to
+be `Full`, or `Custom` with `www.google.com` and `discord.com` allowed. Report
+that and end the run — do not retry it, and do not try to work around it.
 
 This takes roughly 30-40 minutes on the first run and gets faster as dead
 routes are pruned. `--mode both` matters: it searches recombined one-way legs
@@ -137,7 +150,7 @@ Be careful with these traps, all of which have already bitten this project:
 ### 3. Re-rank on corrected numbers
 
 ```bash
-python main.py --rerank
+"$PY" main.py --rerank
 ```
 
 This re-costs the *same* cached fares with your corrected policies — no
