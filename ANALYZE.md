@@ -51,10 +51,15 @@ Read this whole file before running anything.
 ### 1. Scan
 
 ```bash
-pip install -q -r requirements.txt && python main.py --tier 2 --no-notify
+pip install -q -r requirements.txt && python main.py --tier 2 --mode both --no-notify
 ```
 
-This takes roughly 7 minutes. It writes `data/shortlist.json`.
+This takes roughly 30-40 minutes on the first run and gets faster as dead
+routes are pruned. `--mode both` matters: it searches recombined one-way legs
+AND genuine round-trip tickets, because neither reliably wins. Measured on
+identical routes and dates, a round-trip ticket beat two one-ways by $222 from
+LAX and $196 from MIA, while two one-ways beat the round trip by $166 from MSY.
+Do not drop it to save time. It writes `data/shortlist.json`.
 
 Check the scan's own health output. If it reports a high **blocked** rate,
 Google is refusing the datacenter IP — say so plainly in your summary rather

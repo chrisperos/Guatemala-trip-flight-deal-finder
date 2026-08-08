@@ -133,14 +133,15 @@ def scan_roundtrip(origins: list[str], max_dates: int | None,
     if max_dates:
         deps = deps[:max_dates]
 
-    # Stage 1: coarse -- every origin/date at the minimum trip length only.
+    # Stage 1: coarse -- every origin/date at the coarse trip length(s).
     coarse = []
     for o in origins:
         for d in config.DESTINATIONS:
             for day in deps:
-                ret = day + timedelta(days=config.MIN_TRIP_DAYS)
-                if ret <= config.LATEST_RETURN:
-                    coarse.append((o, d, day, ret))
+                for L in config.COARSE_TRIP_LENGTHS:
+                    ret = day + timedelta(days=L)
+                    if ret <= config.LATEST_RETURN:
+                        coarse.append((o, d, day, ret))
     coarse, sk = deadroutes.filter_tasks(coarse, dead)
     if sk:
         _log(f"  skipped {sk} known-dead round-trip pairs")
@@ -165,7 +166,7 @@ def scan_roundtrip(origins: list[str], max_dates: int | None,
     for origin, dep_str in seen:
         dep = _date.fromisoformat(dep_str)
         for L in config.REFINE_TRIP_LENGTHS:
-            if L == config.MIN_TRIP_DAYS:
+            if L in config.COARSE_TRIP_LENGTHS:
                 continue
             ret = dep + timedelta(days=L)
             if ret > config.LATEST_RETURN:

@@ -26,9 +26,19 @@ MIN_TRIP_DAYS = 19
 MAX_TRIP_DAYS = 28
 PREFERRED_MIN_TRIP_DAYS = 21
 
-# Trip lengths explored during the round-trip refine stage. The one-way engine
-# ignores this and considers every length in [MIN_TRIP_DAYS, MAX_TRIP_DAYS].
-REFINE_TRIP_LENGTHS = [21, 22, 23, 24, 25, 26, 28]
+# Round-trip TICKETS are searched separately from recombined one-ways, because
+# neither reliably wins: measured on the same routes and dates, a round-trip
+# ticket came in $222 cheaper than two one-ways from LAX and $196 cheaper from
+# MIA, while two one-ways beat the round trip by $166 from MSY. Searching only
+# one of the two modes is how you miss the actual cheapest trip.
+#
+# The round-trip grid is too large to sweep at every length, so it runs in two
+# stages: COARSE sweeps every origin at these lengths, then the best candidates
+# are refined across REFINE lengths. Coarse defaults to the preferred 21 days
+# rather than the 19-day minimum, so the broad sweep optimises for the trip you
+# actually want.
+COARSE_TRIP_LENGTHS = [21]
+REFINE_TRIP_LENGTHS = [19, 20, 22, 23, 24, 25, 26, 28]
 
 # Step in days across the departure window. 1 = every single day (recommended;
 # it is cheap). Raise to 2 or 3 only if you are being rate limited.
@@ -69,7 +79,7 @@ PROXY = os.environ.get("FLIGHTWATCH_PROXY") or None
 
 # ------------------------------------------------------------------- reporting
 TOP_N_REPORT = 25        # rows in the console/markdown report
-TOP_N_REFINE = 20        # round-trip candidates promoted to the refine stage
+TOP_N_REFINE = 30        # round-trip candidates promoted to the refine stage
 
 # A trip is "all-December" if both the departure and the return fall in
 # December 2026. These get flagged in the report since it is your stated ideal.

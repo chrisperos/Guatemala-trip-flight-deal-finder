@@ -172,21 +172,36 @@ def _make_option(out_q: Quote, in_q: Quote | None, policies) -> TripOption | Non
 
 # ------------------------------------------------------------- recombination
 
-def _index_by_date(quotes: list[Quote], keep_per_date: int) -> dict[str, list[Quote]]:
-    """Cheapest N quotes per calendar date, across all airports."""
+def _leg_all_in(q: Quote, policies) -> int:
+    """Fare plus this leg's own bag cost."""
+    import bagfees
+    bag, _ = bagfees.bag_cost_for(q.airlines, 1, policies)
+    return q.price_usd + bag
+
+
+def _index_by_date(quotes: list[Quote], keep_per_date: int,
+                   policies) -> dict[str, list[Quote]]:
+    """Cheapest N quotes per calendar date, ranked by ALL-IN cost.
+
+    Ranking on bare fare here was a genuine blind spot. Bag fees span ~$30
+    (Copa) to $75 (unverified), so a fare up to $45 more expensive can win on
+    all-in cost -- and if the fares on a given date cluster within that spread,
+    truncating by fare drops the actual winner before it is ever compared.
+    """
     buckets: dict[str, list[Quote]] = {}
     for q in quotes:
         buckets.setdefault(q.depart_date, []).append(q)
     for d in buckets:
-        # keep cheapest per airport first so one dominant airport can't hog
-        # every slot, then take the cheapest N overall
+        # cheapest per airport first, so one dominant airport can't hog every
+        # slot, then the cheapest N of those
         best_per_airport: dict[str, Quote] = {}
         for q in buckets[d]:
             ap = q.origin if q.destination in _dests() else q.destination
             cur = best_per_airport.get(ap)
-            if cur is None or q.price_usd < cur.price_usd:
+            if cur is None or _leg_all_in(q, policies) < _leg_all_in(cur, policies):
                 best_per_airport[ap] = q
-        ranked = sorted(best_per_airport.values(), key=lambda q: q.price_usd)
+        ranked = sorted(best_per_airport.values(),
+                        key=lambda q: _leg_all_in(q, policies))
         buckets[d] = ranked[:keep_per_date]
     return buckets
 
@@ -196,12 +211,12 @@ def _dests() -> set[str]:
 
 
 def combine_oneways(outbound: list[Quote], inbound: list[Quote],
-                    keep_per_date: int = 6) -> list[TripOption]:
+                    keep_per_date: int = 8) -> list[TripOption]:
     import bagfees
     policies = bagfees.load_policies()
 
-    out_idx = _index_by_date(outbound, keep_per_date)
-    in_idx = _index_by_date(inbound, keep_per_date)
+    out_idx = _index_by_date(outbound, keep_per_date, policies)
+    in_idx = _index_by_date(inbound, keep_per_date, policies)
 
     options: list[TripOption] = []
     for dep_str, outs in out_idx.items():
