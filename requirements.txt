@@ -1,1 +1,11 @@
-fast-flights>=3.0
+# Pinned to the 3.x line. This library scrapes Google Flights, so a major
+# version bump can change both the API and the parser without warning.
+fast-flights>=3.0,<4
+
+# fast-flights imports typing_extensions at runtime but does NOT declare it
+# (it lists only primp, protobuf, selectolax). On a developer machine it is
+# already present as some other package's transitive dependency, so nothing
+# breaks. In a fresh container it is absent and the very first import fails --
+# which broke a cloud run before the scan started. Declared here explicitly
+# because every scheduled run installs from scratch.
+typing_extensions>=4.0
