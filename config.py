@@ -81,6 +81,12 @@ REQUEST_TIMEOUT_SEC = 25.0
 # than running unbounded. Generous enough for tier 3 with both modes.
 SCAN_DEADLINE_MIN = 90
 
+# Queries per chunk. Each chunk gets its own thread pool and is checkpointed on
+# completion, so a kill costs at most one chunk instead of a whole phase -- a
+# GitHub runner SIGTERM'd a 6,409-query phase at 93.6% and all of it was lost.
+# Smaller means less work at risk but more checkpoint writes; 500 is ~50s.
+CHUNK_SIZE = 500
+
 # Measured ~19 q/s clean at 8 workers with zero refusals. This cap is polite
 # headroom, not a workaround: watch the "blocked" counter in the scan output
 # and only lower it if that number is actually climbing.

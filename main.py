@@ -83,25 +83,45 @@ def scan_oneway(origins: list[str], max_dates: int | None,
         _log(f"  skipped {sk1 + sk2} queries on known-dead routes")
 
     def run_phase(label: str, ckpt: str, tasks):
-        """Run a phase, or restore it from a checkpoint if one survives.
+        """Run a phase, resuming mid-way if a checkpoint survives.
 
-        Checkpointing exists because a cloud container restart once destroyed a
-        complete 10-minute phase that had never been written to disk.
+        Both halves of this were paid for in lost runs: a cloud container
+        restart destroyed a complete 10-minute phase, and a GitHub runner
+        SIGTERM'd another at 93.6%. Chunks are processed in order and
+        checkpointed on completion, so a resume can skip exactly the tasks
+        already done.
         """
+        fp = store.task_fingerprint(tasks)
+        prior: list = []
+        offset = 0
+
         if not no_resume:
-            saved = store.load_checkpoint(ckpt)
-            if saved is not None:
-                _log(f"  {label}: resumed {len(saved)} quotes from checkpoint "
-                     f"(skipping {len(tasks)} queries)")
-                return saved, search.ScanStats(ok=len(saved))
-        _log(f"  {label}: {len(tasks)} queries")
+            saved = store.load_checkpoint(ckpt, fingerprint=fp)
+            if saved and saved["done"] >= len(tasks):
+                _log(f"  {label}: complete in checkpoint, "
+                     f"{len(saved['quotes'])} quotes, 0 queries needed")
+                return saved["quotes"], search.ScanStats(ok=len(saved["quotes"]))
+            if saved and saved["done"] > 0:
+                prior, offset = saved["quotes"], saved["done"]
+                _log(f"  {label}: resuming at {offset}/{len(tasks)} "
+                     f"({len(prior)} quotes already banked)")
+
+        remaining = list(tasks[offset:])
+        _log(f"  {label}: {len(remaining)} queries")
         t0 = time.time()
-        quotes, stats = search.parallel(tasks, search.search_oneway,
-                                        on_progress=_progress)
-        _log(f"    -> {len(quotes)} quotes in {time.time()-t0:.0f}s")
+
+        def checkpoint(quotes_so_far, done_in_run, _total):
+            store.save_checkpoint(ckpt, prior + quotes_so_far,
+                                  done=offset + done_in_run, fingerprint=fp)
+
+        quotes, stats = search.parallel(remaining, search.search_oneway,
+                                        on_progress=_progress,
+                                        on_chunk=checkpoint)
+        all_quotes = prior + quotes
+        _log(f"    -> {len(all_quotes)} quotes in {time.time()-t0:.0f}s")
         _warn_if_degraded(stats)
-        store.save_checkpoint(ckpt, quotes)
-        return quotes, stats
+        store.save_checkpoint(ckpt, all_quotes, done=len(tasks), fingerprint=fp)
+        return all_quotes, stats
 
     outbound, s1 = run_phase("outbound legs", "oneway_outbound", out_tasks)
     inbound, s2 = run_phase("return legs", "oneway_inbound", in_tasks)

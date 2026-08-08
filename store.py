@@ -50,21 +50,47 @@ def _ckpt_path(name: str) -> str:
     return os.path.join(CHECKPOINT_DIR, f"{name}.json.gz")
 
 
-def save_checkpoint(name: str, quotes) -> None:
+def task_fingerprint(tasks) -> str:
+    """Identify a task list so a resume can prove it matches.
+
+    Necessary because dead-route resurrection is randomised, so two runs can
+    legitimately produce different task lists. Resuming a mid-phase offset
+    against a different list would silently skip the wrong queries.
+    """
+    import hashlib
+
+    h = hashlib.sha256()
+    h.update(str(len(tasks)).encode())
+    for t in tasks:
+        h.update(repr(t).encode())
+    return h.hexdigest()[:16]
+
+
+def save_checkpoint(name: str, quotes, done: int = 0,
+                    fingerprint: str = "") -> None:
     import gzip
     from dataclasses import asdict
 
     os.makedirs(CHECKPOINT_DIR, exist_ok=True)
-    payload = {"saved_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-               "quotes": [asdict(q) for q in quotes]}
+    payload = {
+        "saved_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "done": done,
+        "fingerprint": fingerprint,
+        "quotes": [asdict(q) for q in quotes],
+    }
     tmp = _ckpt_path(name) + ".tmp"
     with gzip.open(tmp, "wt", encoding="utf-8") as fh:
         json.dump(payload, fh)
     os.replace(tmp, _ckpt_path(name))   # atomic: never a half-written file
 
 
-def load_checkpoint(name: str, max_age_min: int = CHECKPOINT_MAX_AGE_MIN):
-    """Return the phase's quotes if a recent checkpoint exists, else None."""
+def load_checkpoint(name: str, max_age_min: int = CHECKPOINT_MAX_AGE_MIN,
+                    fingerprint: str | None = None):
+    """-> {"quotes", "done"} for a usable checkpoint, else None.
+
+    Returns None when the fingerprint disagrees, because a stale offset is
+    worse than no checkpoint: it would skip queries that were never run.
+    """
     import gzip
     from search import Leg, Quote
 
@@ -78,8 +104,11 @@ def load_checkpoint(name: str, max_age_min: int = CHECKPOINT_MAX_AGE_MIN):
         age_min = (datetime.now(timezone.utc) - saved).total_seconds() / 60
         if age_min > max_age_min:
             return None
-        return [Quote(**dict(r, legs=[Leg(**l) for l in r.get("legs", [])]))
-                for r in payload.get("quotes", [])]
+        if fingerprint is not None and payload.get("fingerprint") != fingerprint:
+            return None
+        quotes = [Quote(**dict(r, legs=[Leg(**l) for l in r.get("legs", [])]))
+                  for r in payload.get("quotes", [])]
+        return {"quotes": quotes, "done": int(payload.get("done", 0))}
     except (OSError, json.JSONDecodeError, EOFError, TypeError, ValueError, KeyError):
         return None   # a corrupt checkpoint must never sink the run
 

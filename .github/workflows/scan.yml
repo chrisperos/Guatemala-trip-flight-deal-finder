@@ -33,7 +33,11 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    # Deliberately far above the scanner's own 90-minute SCAN_DEADLINE_MIN.
+    # The internal deadline stops gracefully and still writes results; a job
+    # timeout is a SIGTERM that loses everything not yet checkpointed. The
+    # internal one must always win the race.
+    timeout-minutes: 330
     steps:
       - uses: actions/checkout@v4
 

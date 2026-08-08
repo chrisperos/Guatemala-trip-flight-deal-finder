@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import random
 import time
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import CancelledError, ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field, asdict
 from datetime import date as _date, datetime, timedelta
 from typing import Callable, Iterable, Sequence
@@ -534,7 +534,9 @@ class ScanStats:
 
 
 def parallel(tasks: Sequence[tuple], fn: Callable,
-             on_progress: Callable[[int, int, ScanStats], None] | None = None
+             on_progress: Callable[[int, int, ScanStats], None] | None = None,
+             on_chunk: Callable[[list[Quote], int, int], None] | None = None,
+             chunk_size: int | None = None,
              ) -> tuple[list[Quote], ScanStats]:
     """Run `fn(*task)` across a thread pool.
 
@@ -547,44 +549,64 @@ def parallel(tasks: Sequence[tuple], fn: Callable,
     done = 0
     total = len(tasks)
     aborted = False
+    size = chunk_size or config.CHUNK_SIZE
 
-    with ThreadPoolExecutor(max_workers=config.MAX_WORKERS) as ex:
-        futures = {ex.submit(fn, *t): t for t in tasks}
-        for fut in as_completed(futures):
-            done += 1
-            task = futures[fut]
-            if not aborted and deadline_exceeded():
-                # Stop queueing more work and return what we have. Partial
-                # results clearly labelled beat an unbounded run every time.
-                aborted = True
-                for pending in futures:
-                    pending.cancel()
-                print(f"\n  !! whole-scan deadline ({config.SCAN_DEADLINE_MIN} "
-                      f"min) hit at {elapsed_min():.0f} min, {done}/{total} of "
-                      f"this phase; returning partial results")
-            try:
-                got = fut.result()
-                quotes.extend(got)
-                if got:
-                    stats.ok += 1
-                else:
+    # Work in chunks rather than submitting every task at once. Two reasons,
+    # both learned the hard way: it bounds peak memory (all futures and their
+    # results were previously held live for an entire 6,400-query phase), and
+    # it gives the caller a place to checkpoint. A GitHub runner SIGTERM'd a
+    # phase at 93.6% and every one of those queries was thrown away.
+    for start in range(0, total, size):
+        if aborted:
+            break
+        batch = tasks[start:start + size]
+
+        with ThreadPoolExecutor(max_workers=config.MAX_WORKERS) as ex:
+            futures = {ex.submit(fn, *t): t for t in batch}
+            for fut in as_completed(futures):
+                done += 1
+                task = futures[fut]
+
+                if not aborted and deadline_exceeded():
+                    aborted = True
+                    for pending in futures:
+                        pending.cancel()
+                    print(f"\n  !! whole-scan deadline "
+                          f"({config.SCAN_DEADLINE_MIN} min) hit at "
+                          f"{elapsed_min():.0f} min, {done}/{total} of this "
+                          f"phase; returning partial results")
+
+                try:
+                    got = fut.result()
+                    quotes.extend(got)
+                    if got:
+                        stats.ok += 1
+                    else:
+                        stats.empty += 1
+                        stats.empty_routes.append(_route_of(task))
+                except NoResults:
                     stats.empty += 1
                     stats.empty_routes.append(_route_of(task))
-            except NoResults:
-                stats.empty += 1
-                stats.empty_routes.append(_route_of(task))
-            except Blocked:
-                stats.blocked += 1
-            except Exception as e:  # noqa: BLE001
-                # Deliberately NOT counted as "blocked". Lumping our own crashes
-                # in with Google refusals is precisely how a 40% data loss got
-                # misread as rate-limiting for three rounds of debugging.
-                stats.errors += 1
-                if len(stats.error_samples) < 5:
-                    stats.error_samples.append(
-                        f"{_route_of(task)}: {type(e).__name__}: {e}"[:200])
-            if on_progress and (done % 100 == 0 or done == total):
-                on_progress(done, total, stats)
+                except Blocked:
+                    stats.blocked += 1
+                except CancelledError:
+                    pass
+                except Exception as e:  # noqa: BLE001
+                    # Deliberately NOT counted as "blocked". Lumping our own
+                    # crashes in with Google refusals is precisely how a 40%
+                    # data loss got misread as rate-limiting for three rounds
+                    # of debugging.
+                    stats.errors += 1
+                    if len(stats.error_samples) < 5:
+                        stats.error_samples.append(
+                            f"{_route_of(task)}: {type(e).__name__}: {e}"[:200])
+
+                if on_progress and (done % 100 == 0 or done == total):
+                    on_progress(done, total, stats)
+
+        # Chunk finished and its pool is torn down -- a safe point to persist.
+        if on_chunk:
+            on_chunk(quotes, done, total)
 
     return quotes, stats
 
