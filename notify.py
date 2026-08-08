@@ -59,9 +59,14 @@ def _describe(opt) -> str:
         f"{airlines} · {opt.total_stops} stop(s) · "
         f"longest layover {_fmt_layover(opt.max_layover_min)}",
     ]
+    lines.append(f"**Preference match: {opt.pref_score}/100 "
+                 f"({opt.pref_label})**")
+    if opt.pref_matched:
+        lines.append("✓ " + " · ".join(opt.pref_matched))
+    if opt.pref_missed:
+        lines.append("✗ " + " · ".join(opt.pref_missed))
+
     notes = []
-    if opt.all_december:
-        notes.append("entirely in December")
     if opt.trip_days < config.PREFERRED_MIN_TRIP_DAYS:
         notes.append(f"**only {opt.trip_days} days** (under your 21 target)")
     if opt.carryon_free:

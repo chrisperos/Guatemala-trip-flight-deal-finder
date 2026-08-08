@@ -64,6 +64,12 @@ class TripOption:
     carryon_free: bool = False     # full overhead carry-on included on ALL legs
     bag_notes: list[str] = field(default_factory=list)
     tags: list[str] = field(default_factory=list)
+    # Soft preference match. Purely descriptive -- never affects all_in_usd,
+    # never filters anything out, never suppresses an alert.
+    pref_score: int = 0
+    pref_label: str = ""
+    pref_matched: list[str] = field(default_factory=list)
+    pref_missed: list[str] = field(default_factory=list)
 
     @property
     def kind(self) -> str:
@@ -150,6 +156,16 @@ def _make_option(out_q: Quote, in_q: Quote | None, policies) -> TripOption | Non
         bag_notes=[f"{p.airline}: {p.notes}" for p in
                    {p.airline: p for p in used}.values() if p.notes],
     )
+
+    import preferences
+    ret_ap = in_q.destination if in_q is not None else out_q.origin
+    pm = preferences.evaluate(out_q.origin, ret_ap, d1, d2, days)
+    opt.pref_score = pm.score
+    opt.pref_label = pm.label
+    opt.pref_matched = pm.matched
+    opt.pref_missed = pm.missed
+    if pm.score >= 60:
+        opt.tags.append(f"pref-{pm.label}")
 
     if opt.carryon_free:
         opt.tags.append("free-carryon")
@@ -296,5 +312,43 @@ def shortlist(options: list[TripOption], n: int = 30) -> list[TripOption]:
     # 6. cheapest with no overnight layover, in case the bargains are all grim
     take([o for o in ranked if not o.has_overnight_layover], 3)
 
-    out = sorted(chosen.values(), key=lambda o: o.all_in_usd)
-    return out[:n]
+    # 7. the preference dimension. These are ADDITIVE -- they never displace
+    #    the cheap rows above, they sit alongside them, so the report can show
+    #    "cheapest" and "closest to what you actually want" side by side and
+    #    let the traveler choose rather than choosing for them.
+    by_pref = sorted(options, key=lambda o: (-o.pref_score, o.all_in_usd))
+    take(by_pref, 4)
+
+    #    best match that is also genuinely cheap -- the sweet spot, and the row
+    #    most likely to be the actual answer
+    cheapest = ranked[0].all_in_usd
+    near_cheap = [o for o in options
+                  if o.all_in_usd <= cheapest + config.IDEAL_PREMIUM_USD]
+    take(sorted(near_cheap, key=lambda o: (-o.pref_score, o.all_in_usd)), 4)
+
+    #    best match that clears the price target outright
+    under = [o for o in options if o.all_in_usd <= config.ALERT_THRESHOLD_USD]
+    take(sorted(under, key=lambda o: (-o.pref_score, o.all_in_usd)), 3)
+
+    #    anything touching the home airport, at any price, so its true cost is
+    #    always visible rather than inferred from its absence
+    home = [o for o in options
+            if config.HOME_AIRPORT in (o.outbound.origin,
+                                       o.inbound.destination if o.inbound
+                                       else o.outbound.origin)]
+    take(sorted(home, key=lambda o: o.all_in_usd), 3)
+
+    # The final cut sorts by price, so a pricey-but-ideal option (a Denver
+    # round trip, say) would be truncated away -- precisely the row worth
+    # seeing. Pin the best of each dimension so it always survives.
+    guaranteed: dict[tuple, TripOption] = {}
+    for pool in (ranked, by_pref,
+                 sorted(near_cheap, key=lambda o: (-o.pref_score, o.all_in_usd)),
+                 sorted(home, key=lambda o: o.all_in_usd)):
+        if pool:
+            guaranteed[pool[0].key()] = pool[0]
+
+    out = sorted(chosen.values(), key=lambda o: o.all_in_usd)[:n]
+    seen = {o.key() for o in out}
+    out += [o for k, o in guaranteed.items() if k not in seen]
+    return sorted(out, key=lambda o: o.all_in_usd)

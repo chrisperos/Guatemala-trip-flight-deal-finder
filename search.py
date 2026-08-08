@@ -404,7 +404,9 @@ def parallel(tasks: Sequence[tuple], fn: Callable,
 
 
 def _route_of(task: tuple) -> str:
+    """Must match deadroutes.route_key -- keys are per-mode, not per-pair."""
     try:
-        return f"{task[0]}->{task[1]}"
+        mode = "roundtrip" if len(task) >= 4 else "oneway"
+        return f"{task[0]}->{task[1]}:{mode}"
     except (IndexError, TypeError):
         return "?"

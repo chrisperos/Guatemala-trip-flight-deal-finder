@@ -41,8 +41,22 @@ def save(data: dict) -> None:
         json.dump(data, fh, indent=2, sort_keys=True)
 
 
-def is_dead(data: dict, origin: str, dest: str) -> bool:
-    rec = data.get(f"{origin}->{dest}")
+def route_key(origin: str, dest: str, mode: str) -> str:
+    """Keys are per-MODE, and that distinction is load-bearing.
+
+    DEN->GUA has no one-way inventory at all -- every single query comes back
+    empty -- but DEN<->GUA round-trip tickets sell fine, 12 results at $627.
+    A pair-only key learned "DEN->GUA is dead" from one-way evidence and then
+    suppressed the round-trip search too, silently deleting the traveler's
+    most-wanted airport from every future scan.
+    """
+    return f"{origin}->{dest}:{mode}"
+
+
+def is_dead(data: dict, origin: str, dest: str, mode: str) -> bool:
+    if origin in config.PROTECTED_AIRPORTS or dest in config.PROTECTED_AIRPORTS:
+        return False
+    rec = data.get(route_key(origin, dest, mode))
     if not rec or rec.get("ok", 0) > 0:
         return False
     if rec.get("empty", 0) < DEAD_AFTER:
@@ -77,11 +91,16 @@ def update(data: dict, ok_routes: list[str], empty_routes: list[str]) -> dict:
     return data
 
 
+def mode_of(task: tuple) -> str:
+    """(origin, dest, day) is one-way; (origin, dest, out, back) is round trip."""
+    return "roundtrip" if len(task) >= 4 else "oneway"
+
+
 def filter_tasks(tasks: list[tuple], data: dict) -> tuple[list[tuple], int]:
-    """Drop (origin, dest, ...) tasks whose city pair is retired."""
+    """Drop tasks whose (city pair, mode) combination is retired."""
     keep, skipped = [], 0
     for t in tasks:
-        if len(t) >= 2 and is_dead(data, t[0], t[1]):
+        if len(t) >= 2 and is_dead(data, t[0], t[1], mode_of(t)):
             skipped += 1
         else:
             keep.append(t)
@@ -90,4 +109,5 @@ def filter_tasks(tasks: list[tuple], data: dict) -> tuple[list[tuple], int]:
 
 def summary(data: dict) -> list[str]:
     return sorted(r for r, v in data.items()
-                  if v.get("ok", 0) == 0 and v.get("empty", 0) >= DEAD_AFTER)
+                  if v.get("ok", 0) == 0 and v.get("empty", 0) >= DEAD_AFTER
+                  and not any(a in r for a in config.PROTECTED_AIRPORTS))

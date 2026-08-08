@@ -81,9 +81,33 @@ PROXY = os.environ.get("FLIGHTWATCH_PROXY") or None
 TOP_N_REPORT = 25        # rows in the console/markdown report
 TOP_N_REFINE = 30        # round-trip candidates promoted to the refine stage
 
-# A trip is "all-December" if both the departure and the return fall in
-# December 2026. These get flagged in the report since it is your stated ideal.
-IDEAL_MONTH = (2026, 12)
+# --------------------------------------------------------------- preferences
+# SOFT. None of these can filter, suppress, or hide an option. They only
+# describe how closely a trip matches taste, so the daily report can show BOTH
+# "the outright cheapest" and "the closest to what you actually want" and let
+# you choose. A trip matching none of these still gets reported and still
+# triggers an alert if it is under the price target.
+IDEAL_MONTH = (2026, 12)          # whole trip inside December 2026
+IDEAL_TRIP_DAYS = 21
+HOME_AIRPORT = "DEN"              # Denver International, most-preferred endpoint
+HOME_RADIUS_MILES = 1000          # second-best: anything this close to DEN
+
+# Roughly what the full set of preferences is worth paying for, from the
+# traveler's own framing: a $250 trip matching nothing versus a $300 trip
+# matching everything, and they take the $300. A guide for Claude's judgment,
+# not a rule -- it is not applied to any price.
+IDEAL_PREMIUM_USD = 75
+
+# Airports never pruned by the dead-route cache, however many empties they
+# return. DEN has NO one-way inventory to Guatemala but DOES sell round-trip
+# tickets, so pruning it on one-way evidence silently deleted the traveler's
+# single most-wanted airport from every future scan.
+PROTECTED_AIRPORTS = ["DEN"]
+
+# A preference-matching trip gets its own alert once it clears the price
+# target, so a good match isn't buried just because something uglier is $12
+# cheaper. This NEVER replaces the cheapest-option alert -- both are sent.
+PREF_ALERT_MIN_SCORE = 60
 
 # ---------------------------------------------------------------- notification
 # Discord webhook. Server Settings -> Integrations -> Webhooks -> New Webhook,

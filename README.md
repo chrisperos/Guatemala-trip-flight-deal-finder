@@ -126,6 +126,32 @@ ok=1936 empty=224 blocked=0
 | `data/history.csv` | Append-only price record — what makes "all-time low" mean anything |
 | `data/baggage_policies.json` | Verified bag policies, each with a source URL and date |
 
+## Soft preferences vs. hard cost
+
+Two separate axes, deliberately never mixed.
+
+**Cost** (`all_in_usd`) decides alerts. **Preference** (`pref_score`, 0–100)
+only *describes* how close a trip is to what you actually want: Denver at both
+ends, whole trip inside December, 21 days, includes Christmas, home before New
+Year's Eve. Location is weighted slightly above any other single factor, and
+anything within 1000 miles of DEN scores partial credit.
+
+The rule that makes this safe: **preferences can never filter, downrank, or
+silence an option.** A trip out of New York, back into Orlando, 19 days,
+missing Christmas, landing in January still alerts if it is under $400 — it
+just carries a `26/100 cheapest-only` label so you know what you are looking
+at. Every report names both the outright cheapest *and* the closest match,
+plus the premium between them, and you decide.
+
+Calibration comes from a real example: a $300 trip matching everything beats a
+$250 trip matching nothing. So the whole set is worth about **$75**, not $200 —
+`IDEAL_PREMIUM_USD` encodes that so Claude reasons against a number.
+
+> **Denver is expensive here.** DEN has *no one-way inventory* to Guatemala at
+> all, though it does sell round-trip tickets — around $627 in testing against
+> a ~$428 floor elsewhere. That premium is real and much larger than $75.
+> Whether it closes is exactly what the daily history is for.
+
 ## The shortlist isn't just the 30 cheapest
 
 Handing Claude the 30 cheapest rows is nearly useless — they tend to be 30

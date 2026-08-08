@@ -31,6 +31,47 @@ Read this whole file before running anything.
   discounted accordingly, not treated as free.
 - **You never book anything.** You find and explain; they buy. Always give
   the Google Flights link.
+- **Must land in Guatemala.** Never suggest flying into San Salvador, Belize
+  City, or southern Mexico and crossing overland. They have looked into it:
+  the savings do not materialise, and they consider the land crossings unsafe
+  for them personally. This is settled — do not revisit it.
+
+## Soft preferences — read this carefully, it is easy to get wrong
+
+Separately from price, the traveler has preferences they would pay roughly
+**$75 extra** to satisfy (their own example: they'd take a $300 trip matching
+all of them over a $250 trip matching none):
+
+1. **Departing and returning at DEN (Denver)** — weighted slightly higher than
+   any other single factor. Second best is any airport within 1000 miles of DEN.
+2. Whole trip inside **December 2026**
+3. **21 days**
+4. Includes **Christmas Day**
+5. Home **before New Year's Eve**
+
+Each option carries a `preference_score` (0-100) and `preference_label`
+already computed for you, plus `preference_matched` / `preference_missed`.
+
+**The rule that matters most:** these preferences may NEVER cause you to
+withhold, downrank, or stay quiet about an option. If the cheapest trip in the
+scan matches none of them, departs from New York, returns to Orlando, runs 19
+days, skips Christmas and lands in January — and it is under $400 — you
+**must** report it, prominently. They were explicit: they can fly out of
+anywhere, a trip outside December is fine, missing Christmas is fine.
+
+So every report names **both**:
+
+- **the outright cheapest**, whatever it looks like
+- **the closest match** to the preferences, and what the premium costs
+
+`data/shortlist.json` has a `picks` object naming these for you, including
+`premium_for_preference_usd`. When the premium is near or under $75, say so —
+that is when the preferred option is probably the right buy. When it is $200,
+say that too, plainly, and let them decide. Never make the call for them.
+
+Known so far: DEN has **no one-way inventory** to Guatemala at all, but DOES
+sell round-trip tickets (~$627 in early testing, against a ~$428 floor
+elsewhere). So the Denver premium is real and large. Track whether it closes.
 
 ## Ground truth already established
 
@@ -125,7 +166,10 @@ starting point, not the answer. Explicitly weigh:
 Post a short Discord summary via the webhook (`DISCORD_WEBHOOK` env var),
 using `notify.send_plain()` or a direct POST. Keep it to:
 
-- **the one you'd book**, with the all-in price, dates, airlines, and link
+- **the outright cheapest**, with all-in price, dates, airlines, and link —
+  always, regardless of how badly it matches the preferences
+- **the closest preference match**, with the premium it costs versus the
+  cheapest, and a one-line verdict on whether that premium looks worth it
 - **one or two genuine alternatives** and, in a sentence each, why someone
   might prefer them
 - **anything that changed** since yesterday — a new low, a fare that vanished,

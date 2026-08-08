@@ -173,3 +173,26 @@ def should_alert(opt, state: dict, prior_low: int | None) -> tuple[bool, str]:
                 return True, f"new all-time low (was ${prior_low})"
 
     return False, ""
+
+
+def should_alert_preferred(opt, state: dict) -> tuple[bool, str]:
+    """A second, independent alert for a trip that matches taste AND is cheap.
+
+    Deliberately separate from should_alert so the two can never cannibalise
+    each other. The cheapest option is always evaluated on its own terms --
+    a trip matching none of the preferences still alerts if it is under
+    target. This one only ADDS a notification; it never withholds one.
+    """
+    if opt.pref_score < config.PREF_ALERT_MIN_SCORE:
+        return False, ""
+    if opt.all_in_usd > config.ALERT_THRESHOLD_USD:
+        return False, ""
+    best = state.get("best_pref_alerted_usd")
+    if best is None or opt.all_in_usd <= best - config.MIN_IMPROVEMENT_USD:
+        return True, (f"{opt.pref_label} match for your preferences, and under "
+                      f"${config.ALERT_THRESHOLD_USD}")
+    return False, ""
+
+
+def record_pref_alert(state: dict, price: int) -> None:
+    state["best_pref_alerted_usd"] = price
