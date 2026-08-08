@@ -87,9 +87,9 @@ python main.py --tier 1
 
 | Command | What it does |
 |---|---|
-| `python main.py --tier 1` | Daily scan, 30 gateway airports, ~7 min |
-| `python main.py --tier 2` | 90 airports — slower, wider net |
-| `python main.py --tier 3` | 150 airports, the full long tail |
+| `python main.py --tier 2` | **The daily scan.** 90 airports, ~20 min |
+| `python main.py --tier 1` | 30 gateway airports, ~7 min. Quick check. |
+| `python main.py --tier 3` | 160 airports, the full long tail |
 | `python main.py --rerank` | Re-cost cached fares after fixing a bag policy. No network. Instant. |
 | `python main.py --max-dates 5` | Smoke test |
 | `python main.py --mode both` | Adds a direct round-trip sweep alongside the recombined one-ways |

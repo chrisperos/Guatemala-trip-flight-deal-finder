@@ -51,7 +51,7 @@ Read this whole file before running anything.
 ### 1. Scan
 
 ```bash
-pip install -q -r requirements.txt && python main.py --tier 1 --no-notify
+pip install -q -r requirements.txt && python main.py --tier 2 --no-notify
 ```
 
 This takes roughly 7 minutes. It writes `data/shortlist.json`.
