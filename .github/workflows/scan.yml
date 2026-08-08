@@ -17,6 +17,13 @@ name: flight scan
 
 on:
   workflow_dispatch:
+    inputs:
+      tier:
+        description: "Airport tier (1=30 airports ~12min, 2=90 ~40min, 3=160 ~75min)"
+        required: false
+        default: "1"
+        type: choice
+        options: ["1", "2", "3"]
   schedule:
     # 16:20 UTC daily, ~70 minutes ahead of the 17:30 UTC routine, so the
     # routine always finds fresh data waiting for it.
@@ -49,11 +56,23 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      # Tier 1 by default, and the reasoning matters. Three separate runs were
+      # killed mid-scan by things outside our control -- a container restart,
+      # a SIGTERM -- and every one of them was healthy at the moment it died.
+      # The common factor is duration, not correctness. Tier 1 with both modes
+      # is ~6,400 queries and finishes in ~12 minutes instead of ~40, which is
+      # a far smaller target.
+      #
+      # What this actually costs: 30 airports instead of 90. Those 30 are the
+      # gateways with real Guatemala service plus the budget hubs -- including
+      # DEN, so the Denver preference is untouched. Most of the other 60 return
+      # nothing at all. Run tier 2 or 3 by hand from the Actions tab whenever
+      # you want the wider sweep.
       - name: Scan
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
           DISCORD_MENTION_USER_ID: ${{ secrets.DISCORD_MENTION_USER_ID }}
-        run: python main.py --tier 2 --mode both
+        run: python main.py --tier ${{ inputs.tier || '1' }} --mode both
 
       - name: Commit results
         run: |
