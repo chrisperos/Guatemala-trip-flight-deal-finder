@@ -125,11 +125,28 @@ PROTECTED_AIRPORTS = ["DEN"]
 # cheaper. This NEVER replaces the cheapest-option alert -- both are sent.
 PREF_ALERT_MIN_SCORE = 60
 
+# ----------------------------------------------------------------- DISCLOSURE
+# The Discord channel has other readers. Everything above -- HOME_AIRPORT,
+# IDEAL_TRIP_DAYS, the December/Christmas targets, ALERT_THRESHOLD_USD, the
+# preference scores -- is planning input, NOT publishable content. Notifications
+# and Claude's summaries state prices, routes, dates, airlines and baggage
+# facts, and nothing about why one option is preferred over another.
+#
+# Note the limit of this: an itinerary's own dates reveal its length. Concealing
+# the target trip length entirely means not publishing itineraries at all, which
+# is what DISCORD_WEBHOOK_PRIVATE below is for.
+
 # ---------------------------------------------------------------- notification
 # Discord webhook. Server Settings -> Integrations -> Webhooks -> New Webhook,
 # then copy the URL. NEVER commit it: the URL alone lets anyone post to your
 # channel. Set it as an environment variable / repo secret instead.
 DISCORD_WEBHOOK = os.environ.get("DISCORD_WEBHOOK", "")
+
+# If set, EVERYTHING goes here instead and the shared channel gets nothing.
+# Use this if the shared channel should not see the itineraries at all --
+# suppressing preference language still leaves trip length inferable from the
+# dates of any itinerary posted.
+DISCORD_WEBHOOK_PRIVATE = os.environ.get("DISCORD_WEBHOOK_PRIVATE", "")
 
 # For phone push to actually reach you, open the channel on mobile and set
 # Notification Settings to "All Messages" -- Discord's default suppresses

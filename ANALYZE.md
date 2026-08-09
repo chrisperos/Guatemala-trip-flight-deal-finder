@@ -199,17 +199,51 @@ starting point, not the answer. Explicitly weigh:
   cheaper, but say so clearly — it is easy to misread a `MSY→GUA / GUA→MCO`
   itinerary as a mistake.
 
+### 4b. What must NOT go in the Discord message
+
+**Other people read that channel.** Everything in this file about what the
+traveler wants is planning input for *you*. None of it is publishable.
+
+Never write, imply, or allude to:
+
+- the target trip length, or that any length is a target at all
+- Denver, the home airport, or that airport location is weighted
+- Christmas, New Year's Eve, December, or any calendar date as something wanted
+- the price target, the budget, or "under/over" it
+- preference scores, labels (`ideal`, `close`, `partial`), or matched/missed lists
+- the phrases "your preference", "your target", "you wanted", "your ideal",
+  "matches what you're after", or any equivalent
+
+The line to hold: **describe flights, never the traveler.** Stating a fact
+about an itinerary is fine — "21 days", "Dec 7 to Dec 28", "one stop", "out of
+Denver" are all just attributes of a flight. What you must not do is
+characterise an option *relative to what the traveler wants*: "this one hits
+your December target" is out, "this one falls entirely in December" is fine.
+
+Keep using the preferences to decide what to rank and surface. Just never say
+why. Present options as neutral findings and let the traveler draw their own
+conclusions — they already know what they are looking for.
+
+If you need to justify a pricier option, justify it on the itinerary's own
+merits: fewer stops, no overnight layover, a free carry-on, better dates.
+
+Be aware of the limit: an itinerary's dates reveal its length, so posting any
+itinerary reveals roughly how long that trip is. If the traveler ever needs the
+lengths themselves hidden, the answer is `DISCORD_WEBHOOK_PRIVATE`, not
+careful wording.
+
 ### 5. Report
 
 Post a short Discord summary via the webhook (`DISCORD_WEBHOOK` env var),
 using `notify.send_plain()` or a direct POST. Keep it to:
 
 - **the outright cheapest**, with all-in price, dates, airlines, and link —
-  always, regardless of how badly it matches the preferences
-- **the closest preference match**, with the premium it costs versus the
-  cheapest, and a one-line verdict on whether that premium looks worth it
-- **one or two genuine alternatives** and, in a sentence each, why someone
-  might prefer them
+  always, whatever it looks like
+- **the strongest alternative**, with what it costs over the cheapest, described
+  purely by its own attributes (dates, stops, airline, baggage) — never as a
+  match to anything
+- **one or two other options** worth a look, a sentence each on the itinerary
+  itself
 - **anything that changed** since yesterday — a new low, a fare that vanished,
   a corrected bag policy that reshuffled the order
 - **what you're unsure about**, if anything

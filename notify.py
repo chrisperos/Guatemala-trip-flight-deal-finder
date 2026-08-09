@@ -18,6 +18,11 @@ GREEN = 0x2ECC71    # under target -- go book it
 BLUE = 0x3498DB     # new low -- informational
 
 
+def _webhook() -> str:
+    """Private channel wins whenever one is configured."""
+    return config.DISCORD_WEBHOOK_PRIVATE or config.DISCORD_WEBHOOK
+
+
 def _post_json(url: str, payload: dict) -> bool:
     data = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
@@ -59,16 +64,11 @@ def _describe(opt) -> str:
         f"{airlines} · {opt.total_stops} stop(s) · "
         f"longest layover {_fmt_layover(opt.max_layover_min)}",
     ]
-    lines.append(f"**Preference match: {opt.pref_score}/100 "
-                 f"({opt.pref_label})**")
-    if opt.pref_matched:
-        lines.append("✓ " + " · ".join(opt.pref_matched))
-    if opt.pref_missed:
-        lines.append("✗ " + " · ".join(opt.pref_missed))
-
+    # No preference scores, no matched/missed lists, no "under your target"
+    # phrasing. This channel has other readers, and the traveler's planning
+    # criteria are not theirs to see. Only neutral, factual flight attributes
+    # go out. See DISCLOSURE in config.py.
     notes = []
-    if opt.trip_days < config.PREFERRED_MIN_TRIP_DAYS:
-        notes.append(f"**only {opt.trip_days} days** (under your 21 target)")
     if opt.carryon_free:
         notes.append("free carry-on included")
     else:
@@ -83,11 +83,14 @@ def _describe(opt) -> str:
 
 
 def send_discord(opt, reason: str, urgent: bool) -> bool:
-    if not config.DISCORD_WEBHOOK:
+    hook = _webhook()
+    if not hook:
         return False
 
-    title = (f"${opt.all_in_usd} to Guatemala — under your ${config.ALERT_THRESHOLD_USD} target"
-             if urgent else f"${opt.all_in_usd} to Guatemala — {reason}")
+    # Neutral titles. "under your $400 target" announces a budget to a room
+    # that does not need to know it.
+    title = (f"${opt.all_in_usd} all-in to Guatemala — price drop"
+             if urgent else f"${opt.all_in_usd} all-in to Guatemala")
 
     content = ""
     if urgent and config.DISCORD_MENTION_USER_ID:
@@ -112,7 +115,7 @@ def send_discord(opt, reason: str, urgent: bool) -> bool:
                                "weight limit on the airline's own site before booking."},
         }],
     }
-    return _post_json(config.DISCORD_WEBHOOK, payload)
+    return _post_json(hook, payload)
 
 
 def send_ntfy(opt, reason: str, urgent: bool) -> bool:
@@ -147,7 +150,8 @@ def alert(opt, reason: str) -> bool:
 
 def send_plain(text: str) -> bool:
     """For scan-health warnings that aren't about a specific fare."""
-    if not config.DISCORD_WEBHOOK:
+    hook = _webhook()
+    if not hook:
         return False
     return _post_json(config.DISCORD_WEBHOOK,
                       {"username": "flightwatch", "content": text[:1900]})
