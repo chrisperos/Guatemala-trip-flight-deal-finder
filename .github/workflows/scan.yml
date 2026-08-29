@@ -19,9 +19,9 @@ on:
   workflow_dispatch:
     inputs:
       tier:
-        description: "Airport tier (1=30 airports ~12min, 2=90 ~40min, 3=160 ~75min)"
+        description: "Airport tier (1=30 airports ~10min, 2=90 ~25min, 3=160 ~50min)"
         required: false
-        default: "1"
+        default: "2"
         type: choice
         options: ["1", "2", "3"]
   schedule:
@@ -56,23 +56,21 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      # Tier 1 by default, and the reasoning matters. Three separate runs were
-      # killed mid-scan by things outside our control -- a container restart,
-      # a SIGTERM -- and every one of them was healthy at the moment it died.
-      # The common factor is duration, not correctness. Tier 1 with both modes
-      # is ~6,400 queries and finishes in ~12 minutes instead of ~40, which is
-      # a far smaller target.
+      # Tier 2. This was dropped to tier 1 on 2026-08-08 as an emergency
+      # measure while runs were being killed mid-scan. That crisis is over --
+      # 18 consecutive clean daily runs since -- and tier 1 has a measurable
+      # cost: PIT produced the best December itinerary ever found ($467,
+      # includes Christmas Day, home before NYE) and has not been scanned
+      # since Aug 8, because it is a tier-2 airport. It is healthy in the
+      # dead-route cache, just never queried.
       #
-      # What this actually costs: 30 airports instead of 90. Those 30 are the
-      # gateways with real Guatemala service plus the budget hubs -- including
-      # DEN, so the Denver preference is untouched. Most of the other 60 return
-      # nothing at all. Run tier 2 or 3 by hand from the Actions tab whenever
-      # you want the wider sweep.
+      # Tier 2 is also much cheaper than it was: the cache now prunes 18% of
+      # its queries, so ~25 minutes rather than the original ~40.
       - name: Scan
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
           DISCORD_MENTION_USER_ID: ${{ secrets.DISCORD_MENTION_USER_ID }}
-        run: python main.py --tier ${{ inputs.tier || '1' }} --mode both
+        run: python main.py --tier ${{ inputs.tier || '2' }} --mode both
 
       - name: Commit results
         run: |
