@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-31T21:58:23+00:00",
+  "generated_at": "2026-09-01T19:54:19+00:00",
   "meta": {
-    "scanned_at": "2026-08-31T21:58:23+00:00",
+    "scanned_at": "2026-09-01T19:54:19+00:00",
     "origins": 90,
     "tier": 2,
     "mode": "both",
-    "options_considered": 73626,
+    "options_considered": 74031,
     "prior_all_time_low_usd": 391
   },
   "traveler_constraints": {
@@ -37,20 +37,20 @@
       "rank": 1,
       "all_in_usd": 391,
       "route": "FLL<->GUA",
-      "dates": "2027-01-14 -> 2027-02-07",
-      "trip_days": 24,
-      "preference_score": 9
+      "dates": "2027-01-06 -> 2027-01-26",
+      "trip_days": 20,
+      "preference_score": 13
     },
     "best_preference_match": {
       "rank": 27,
-      "all_in_usd": 643,
+      "all_in_usd": 664,
       "route": "DEN<->GUA",
-      "dates": "2026-12-07 -> 2026-12-28",
+      "dates": "2026-12-06 -> 2026-12-27",
       "trip_days": 21,
       "preference_score": 100
     },
     "best_value_within_premium": {
-      "rank": 13,
+      "rank": 15,
       "all_in_usd": 461,
       "route": "AUS<->GUA",
       "dates": "2026-11-18 -> 2026-12-09",
@@ -59,13 +59,13 @@
     },
     "cheapest_touching_home_airport": {
       "rank": 26,
-      "all_in_usd": 619,
-      "route": "LGA->GUA / GUA->DEN",
-      "dates": "2026-12-05 -> 2026-12-27",
-      "trip_days": 22,
-      "preference_score": 80
+      "all_in_usd": 625,
+      "route": "DEN<->GUA",
+      "dates": "2026-11-13 -> 2026-12-04",
+      "trip_days": 21,
+      "preference_score": 65
     },
-    "premium_for_preference_usd": 252
+    "premium_for_preference_usd": 273
   },
   "airlines_seen": [
     "American",
@@ -91,9 +91,9 @@
       "route": "FLL<->GUA",
       "origin": "FLL",
       "return_airport": "FLL",
-      "depart_date": "2027-01-14",
-      "return_date": "2027-02-07",
-      "trip_days": 24,
+      "depart_date": "2027-01-06",
+      "return_date": "2027-01-26",
+      "trip_days": 20,
       "fare_usd": 331,
       "estimated_bag_usd": 60,
       "estimated_all_in_usd": 391,
@@ -102,15 +102,16 @@
       "baggage_notes": [
         "COPA Airlines: STRONG VALUE. Economy Basic has no free checked bag but an added bag is only ~$30 online (vs $45-50 on US legacy carriers). Economy Classic INCLUDES one free checked bag - if Classic costs less than ~$30 more than Basic, take Classic. Free 10kg carry-on AND personal item on every fare including Basic. Checked allowance 23kg/50lb."
       ],
-      "preference_score": 9,
+      "preference_score": 13,
       "preference_label": "cheapest-only",
-      "preference_matched": [],
+      "preference_matched": [
+        "20 days (near 21)"
+      ],
       "preference_missed": [
         "far from DEN (1702mi/1702mi)",
         "not entirely in December",
         "misses Christmas Day",
-        "home on/after New Year's Eve",
-        "24 days, not 21"
+        "home on/after New Year's Eve"
       ],
       "airlines": [
         "COPA"
@@ -121,7 +122,7 @@
       "all_december": false,
       "tags": [
         "free-carryon",
-        "21+days",
+        "short-20d",
         "1-stop",
         "overnight-layover"
       ],
@@ -129,22 +130,22 @@
         {
           "from_airport": "FLL",
           "to_airport": "PTY",
-          "depart": "2027-01-14T17:09",
-          "arrive": "2027-01-14T20:19",
+          "depart": "2027-01-06T17:09",
+          "arrive": "2027-01-06T20:19",
           "duration_min": 190,
           "plane": "Boeing 737"
         },
         {
           "from_airport": "PTY",
           "to_airport": "GUA",
-          "depart": "2027-01-15T08:15",
-          "arrive": "2027-01-15T09:38",
+          "depart": "2027-01-07T08:15",
+          "arrive": "2027-01-07T09:38",
           "duration_min": 143,
-          "plane": "Boeing 737"
+          "plane": "Boeing 737MAX 8 Passenger"
         }
       ],
       "inbound_legs": [],
-      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMTRqBRIDRkxMcgUSA0dVQRoaEgoyMDI3LTAyLTA3agUSA0dVQXIFEgNGTExCAQFIAZgBAQ==&hl=en-US&curr=USD",
+      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMDZqBRIDRkxMcgUSA0dVQRoaEgoyMDI3LTAxLTI2agUSA0dVQXIFEgNGTExCAQFIAZgBAQ==&hl=en-US&curr=USD",
       "booking_url_inbound": ""
     },
     {
@@ -342,6 +343,68 @@
       "origin": "TPA",
       "return_airport": "TPA",
       "depart_date": "2027-01-11",
+      "return_date": "2027-02-04",
+      "trip_days": 24,
+      "fare_usd": 339,
+      "estimated_bag_usd": 60,
+      "estimated_all_in_usd": 399,
+      "bag_estimate_confidence": "stale",
+      "free_carryon_included": true,
+      "baggage_notes": [
+        "COPA Airlines: STRONG VALUE. Economy Basic has no free checked bag but an added bag is only ~$30 online (vs $45-50 on US legacy carriers). Economy Classic INCLUDES one free checked bag - if Classic costs less than ~$30 more than Basic, take Classic. Free 10kg carry-on AND personal item on every fare including Basic. Checked allowance 23kg/50lb."
+      ],
+      "preference_score": 9,
+      "preference_label": "cheapest-only",
+      "preference_matched": [],
+      "preference_missed": [
+        "far from DEN (1505mi/1505mi)",
+        "not entirely in December",
+        "misses Christmas Day",
+        "home on/after New Year's Eve",
+        "24 days, not 21"
+      ],
+      "airlines": [
+        "COPA"
+      ],
+      "total_stops": 1,
+      "max_layover_min": 645,
+      "overnight_layover": true,
+      "all_december": false,
+      "tags": [
+        "free-carryon",
+        "21+days",
+        "1-stop",
+        "overnight-layover"
+      ],
+      "outbound_legs": [
+        {
+          "from_airport": "TPA",
+          "to_airport": "PTY",
+          "depart": "2027-01-11T17:16",
+          "arrive": "2027-01-11T20:40",
+          "duration_min": 204,
+          "plane": "Boeing 737"
+        },
+        {
+          "from_airport": "PTY",
+          "to_airport": "GUA",
+          "depart": "2027-01-12T07:25",
+          "arrive": "2027-01-12T08:43",
+          "duration_min": 138,
+          "plane": "Boeing 737MAX 8 Passenger"
+        }
+      ],
+      "inbound_legs": [],
+      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMTFqBRIDVFBBcgUSA0dVQRoaEgoyMDI3LTAyLTA0agUSA0dVQXIFEgNUUEFCAQFIAZgBAQ==&hl=en-US&curr=USD",
+      "booking_url_inbound": ""
+    },
+    {
+      "rank": 6,
+      "kind": "roundtrip",
+      "route": "TPA<->GUA",
+      "origin": "TPA",
+      "return_airport": "TPA",
+      "depart_date": "2027-01-11",
       "return_date": "2027-02-08",
       "trip_days": 28,
       "fare_usd": 339,
@@ -398,23 +461,86 @@
       "booking_url_inbound": ""
     },
     {
-      "rank": 6,
+      "rank": 7,
       "kind": "roundtrip",
       "route": "FLL<->GUA",
       "origin": "FLL",
       "return_airport": "FLL",
-      "depart_date": "2027-01-14",
-      "return_date": "2027-02-08",
-      "trip_days": 25,
-      "fare_usd": 349,
+      "depart_date": "2027-01-06",
+      "return_date": "2027-01-27",
+      "trip_days": 21,
+      "fare_usd": 341,
       "estimated_bag_usd": 60,
-      "estimated_all_in_usd": 409,
+      "estimated_all_in_usd": 401,
       "bag_estimate_confidence": "stale",
       "free_carryon_included": true,
       "baggage_notes": [
         "COPA Airlines: STRONG VALUE. Economy Basic has no free checked bag but an added bag is only ~$30 online (vs $45-50 on US legacy carriers). Economy Classic INCLUDES one free checked bag - if Classic costs less than ~$30 more than Basic, take Classic. Free 10kg carry-on AND personal item on every fare including Basic. Checked allowance 23kg/50lb."
       ],
-      "preference_score": 6,
+      "preference_score": 15,
+      "preference_label": "cheapest-only",
+      "preference_matched": [
+        "exactly 21 days"
+      ],
+      "preference_missed": [
+        "far from DEN (1702mi/1702mi)",
+        "not entirely in December",
+        "misses Christmas Day",
+        "home on/after New Year's Eve"
+      ],
+      "airlines": [
+        "COPA"
+      ],
+      "total_stops": 1,
+      "max_layover_min": 716,
+      "overnight_layover": true,
+      "all_december": false,
+      "tags": [
+        "free-carryon",
+        "21+days",
+        "1-stop",
+        "overnight-layover"
+      ],
+      "outbound_legs": [
+        {
+          "from_airport": "FLL",
+          "to_airport": "PTY",
+          "depart": "2027-01-06T17:09",
+          "arrive": "2027-01-06T20:19",
+          "duration_min": 190,
+          "plane": "Boeing 737"
+        },
+        {
+          "from_airport": "PTY",
+          "to_airport": "GUA",
+          "depart": "2027-01-07T08:15",
+          "arrive": "2027-01-07T09:38",
+          "duration_min": 143,
+          "plane": "Boeing 737MAX 8 Passenger"
+        }
+      ],
+      "inbound_legs": [],
+      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMDZqBRIDRkxMcgUSA0dVQRoaEgoyMDI3LTAxLTI3agUSA0dVQXIFEgNGTExCAQFIAZgBAQ==&hl=en-US&curr=USD",
+      "booking_url_inbound": ""
+    },
+    {
+      "rank": 8,
+      "kind": "roundtrip",
+      "route": "FLL<->GUA",
+      "origin": "FLL",
+      "return_airport": "FLL",
+      "depart_date": "2027-01-14",
+      "return_date": "2027-02-07",
+      "trip_days": 24,
+      "fare_usd": 341,
+      "estimated_bag_usd": 60,
+      "estimated_all_in_usd": 401,
+      "bag_estimate_confidence": "stale",
+      "free_carryon_included": true,
+      "baggage_notes": [
+        "COPA Airlines: STRONG VALUE. Economy Basic has no free checked bag but an added bag is only ~$30 online (vs $45-50 on US legacy carriers). Economy Classic INCLUDES one free checked bag - if Classic costs less than ~$30 more than Basic, take Classic. Free 10kg carry-on AND personal item on every fare including Basic. Checked allowance 23kg/50lb."
+      ],
+      "preference_score": 9,
       "preference_label": "cheapest-only",
       "preference_matched": [],
       "preference_missed": [
@@ -422,7 +548,7 @@
         "not entirely in December",
         "misses Christmas Day",
         "home on/after New Year's Eve",
-        "25 days, not 21"
+        "24 days, not 21"
       ],
       "airlines": [
         "COPA"
@@ -456,197 +582,11 @@
         }
       ],
       "inbound_legs": [],
-      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMTRqBRIDRkxMcgUSA0dVQRoaEgoyMDI3LTAyLTA4agUSA0dVQXIFEgNGTExCAQFIAZgBAQ==&hl=en-US&curr=USD",
-      "booking_url_inbound": ""
-    },
-    {
-      "rank": 7,
-      "kind": "roundtrip",
-      "route": "FLL<->GUA",
-      "origin": "FLL",
-      "return_airport": "FLL",
-      "depart_date": "2027-01-13",
-      "return_date": "2027-02-08",
-      "trip_days": 26,
-      "fare_usd": 349,
-      "estimated_bag_usd": 60,
-      "estimated_all_in_usd": 409,
-      "bag_estimate_confidence": "stale",
-      "free_carryon_included": true,
-      "baggage_notes": [
-        "COPA Airlines: STRONG VALUE. Economy Basic has no free checked bag but an added bag is only ~$30 online (vs $45-50 on US legacy carriers). Economy Classic INCLUDES one free checked bag - if Classic costs less than ~$30 more than Basic, take Classic. Free 10kg carry-on AND personal item on every fare including Basic. Checked allowance 23kg/50lb."
-      ],
-      "preference_score": 4,
-      "preference_label": "cheapest-only",
-      "preference_matched": [],
-      "preference_missed": [
-        "far from DEN (1702mi/1702mi)",
-        "not entirely in December",
-        "misses Christmas Day",
-        "home on/after New Year's Eve",
-        "26 days, not 21"
-      ],
-      "airlines": [
-        "COPA"
-      ],
-      "total_stops": 1,
-      "max_layover_min": 666,
-      "overnight_layover": true,
-      "all_december": false,
-      "tags": [
-        "free-carryon",
-        "21+days",
-        "1-stop",
-        "overnight-layover"
-      ],
-      "outbound_legs": [
-        {
-          "from_airport": "FLL",
-          "to_airport": "PTY",
-          "depart": "2027-01-13T17:09",
-          "arrive": "2027-01-13T20:19",
-          "duration_min": 190,
-          "plane": "Boeing 737"
-        },
-        {
-          "from_airport": "PTY",
-          "to_airport": "GUA",
-          "depart": "2027-01-14T07:25",
-          "arrive": "2027-01-14T08:43",
-          "duration_min": 138,
-          "plane": "Boeing 737MAX 8 Passenger"
-        }
-      ],
-      "inbound_legs": [],
-      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMTNqBRIDRkxMcgUSA0dVQRoaEgoyMDI3LTAyLTA4agUSA0dVQXIFEgNGTExCAQFIAZgBAQ==&hl=en-US&curr=USD",
-      "booking_url_inbound": ""
-    },
-    {
-      "rank": 8,
-      "kind": "roundtrip",
-      "route": "FLL<->GUA",
-      "origin": "FLL",
-      "return_airport": "FLL",
-      "depart_date": "2027-01-13",
-      "return_date": "2027-02-01",
-      "trip_days": 19,
-      "fare_usd": 359,
-      "estimated_bag_usd": 60,
-      "estimated_all_in_usd": 419,
-      "bag_estimate_confidence": "stale",
-      "free_carryon_included": true,
-      "baggage_notes": [
-        "COPA Airlines: STRONG VALUE. Economy Basic has no free checked bag but an added bag is only ~$30 online (vs $45-50 on US legacy carriers). Economy Classic INCLUDES one free checked bag - if Classic costs less than ~$30 more than Basic, take Classic. Free 10kg carry-on AND personal item on every fare including Basic. Checked allowance 23kg/50lb."
-      ],
-      "preference_score": 11,
-      "preference_label": "cheapest-only",
-      "preference_matched": [
-        "19 days (near 21)"
-      ],
-      "preference_missed": [
-        "far from DEN (1702mi/1702mi)",
-        "not entirely in December",
-        "misses Christmas Day",
-        "home on/after New Year's Eve"
-      ],
-      "airlines": [
-        "COPA"
-      ],
-      "total_stops": 1,
-      "max_layover_min": 666,
-      "overnight_layover": true,
-      "all_december": false,
-      "tags": [
-        "free-carryon",
-        "short-19d",
-        "1-stop",
-        "overnight-layover"
-      ],
-      "outbound_legs": [
-        {
-          "from_airport": "FLL",
-          "to_airport": "PTY",
-          "depart": "2027-01-13T17:09",
-          "arrive": "2027-01-13T20:19",
-          "duration_min": 190,
-          "plane": "Boeing 737"
-        },
-        {
-          "from_airport": "PTY",
-          "to_airport": "GUA",
-          "depart": "2027-01-14T07:25",
-          "arrive": "2027-01-14T08:43",
-          "duration_min": 138,
-          "plane": "Boeing 737MAX 8 Passenger"
-        }
-      ],
-      "inbound_legs": [],
-      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMTNqBRIDRkxMcgUSA0dVQRoaEgoyMDI3LTAyLTAxagUSA0dVQXIFEgNGTExCAQFIAZgBAQ==&hl=en-US&curr=USD",
+      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMTRqBRIDRkxMcgUSA0dVQRoaEgoyMDI3LTAyLTA3agUSA0dVQXIFEgNGTExCAQFIAZgBAQ==&hl=en-US&curr=USD",
       "booking_url_inbound": ""
     },
     {
       "rank": 9,
-      "kind": "roundtrip",
-      "route": "TPA<->GUA",
-      "origin": "TPA",
-      "return_airport": "TPA",
-      "depart_date": "2027-01-15",
-      "return_date": "2027-02-08",
-      "trip_days": 24,
-      "fare_usd": 364,
-      "estimated_bag_usd": 60,
-      "estimated_all_in_usd": 424,
-      "bag_estimate_confidence": "stale",
-      "free_carryon_included": true,
-      "baggage_notes": [
-        "COPA Airlines: STRONG VALUE. Economy Basic has no free checked bag but an added bag is only ~$30 online (vs $45-50 on US legacy carriers). Economy Classic INCLUDES one free checked bag - if Classic costs less than ~$30 more than Basic, take Classic. Free 10kg carry-on AND personal item on every fare including Basic. Checked allowance 23kg/50lb."
-      ],
-      "preference_score": 9,
-      "preference_label": "cheapest-only",
-      "preference_matched": [],
-      "preference_missed": [
-        "far from DEN (1505mi/1505mi)",
-        "not entirely in December",
-        "misses Christmas Day",
-        "home on/after New Year's Eve",
-        "24 days, not 21"
-      ],
-      "airlines": [
-        "COPA"
-      ],
-      "total_stops": 1,
-      "max_layover_min": 230,
-      "overnight_layover": false,
-      "all_december": false,
-      "tags": [
-        "free-carryon",
-        "21+days",
-        "1-stop"
-      ],
-      "outbound_legs": [
-        {
-          "from_airport": "TPA",
-          "to_airport": "PTY",
-          "depart": "2027-01-15T14:30",
-          "arrive": "2027-01-15T17:55",
-          "duration_min": 205,
-          "plane": "Boeing 737"
-        },
-        {
-          "from_airport": "PTY",
-          "to_airport": "GUA",
-          "depart": "2027-01-15T21:45",
-          "arrive": "2027-01-15T23:06",
-          "duration_min": 141,
-          "plane": "Boeing 737"
-        }
-      ],
-      "inbound_legs": [],
-      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMTVqBRIDVFBBcgUSA0dVQRoaEgoyMDI3LTAyLTA4agUSA0dVQXIFEgNUUEFCAQFIAZgBAQ==&hl=en-US&curr=USD",
-      "booking_url_inbound": ""
-    },
-    {
-      "rank": 10,
       "kind": "roundtrip",
       "route": "RDU<->GUA",
       "origin": "RDU",
@@ -654,9 +594,9 @@
       "depart_date": "2026-11-18",
       "return_date": "2026-12-09",
       "trip_days": 21,
-      "fare_usd": 366,
+      "fare_usd": 351,
       "estimated_bag_usd": 60,
-      "estimated_all_in_usd": 426,
+      "estimated_all_in_usd": 411,
       "bag_estimate_confidence": "stale",
       "free_carryon_included": true,
       "baggage_notes": [
@@ -706,6 +646,69 @@
       ],
       "inbound_legs": [],
       "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMThqBRIDUkRVcgUSA0dVQRoaEgoyMDI2LTEyLTA5agUSA0dVQXIFEgNSRFVCAQFIAZgBAQ==&hl=en-US&curr=USD",
+      "booking_url_inbound": ""
+    },
+    {
+      "rank": 10,
+      "kind": "roundtrip",
+      "route": "FLL<->GUA",
+      "origin": "FLL",
+      "return_airport": "FLL",
+      "depart_date": "2026-11-13",
+      "return_date": "2026-12-04",
+      "trip_days": 21,
+      "fare_usd": 367,
+      "estimated_bag_usd": 60,
+      "estimated_all_in_usd": 427,
+      "bag_estimate_confidence": "stale",
+      "free_carryon_included": true,
+      "baggage_notes": [
+        "COPA Airlines: STRONG VALUE. Economy Basic has no free checked bag but an added bag is only ~$30 online (vs $45-50 on US legacy carriers). Economy Classic INCLUDES one free checked bag - if Classic costs less than ~$30 more than Basic, take Classic. Free 10kg carry-on AND personal item on every fare including Basic. Checked allowance 23kg/50lb."
+      ],
+      "preference_score": 30,
+      "preference_label": "cheapest-only",
+      "preference_matched": [
+        "home before New Year's Eve",
+        "exactly 21 days"
+      ],
+      "preference_missed": [
+        "far from DEN (1702mi/1702mi)",
+        "not entirely in December",
+        "misses Christmas Day"
+      ],
+      "airlines": [
+        "COPA"
+      ],
+      "total_stops": 1,
+      "max_layover_min": 716,
+      "overnight_layover": true,
+      "all_december": false,
+      "tags": [
+        "free-carryon",
+        "21+days",
+        "1-stop",
+        "overnight-layover"
+      ],
+      "outbound_legs": [
+        {
+          "from_airport": "FLL",
+          "to_airport": "PTY",
+          "depart": "2026-11-13T17:11",
+          "arrive": "2026-11-13T20:19",
+          "duration_min": 188,
+          "plane": "Boeing 737"
+        },
+        {
+          "from_airport": "PTY",
+          "to_airport": "GUA",
+          "depart": "2026-11-14T08:15",
+          "arrive": "2026-11-14T09:39",
+          "duration_min": 144,
+          "plane": "Boeing 737"
+        }
+      ],
+      "inbound_legs": [],
+      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMTNqBRIDRkxMcgUSA0dVQRoaEgoyMDI2LTEyLTA0agUSA0dVQXIFEgNGTExCAQFIAZgBAQ==&hl=en-US&curr=USD",
       "booking_url_inbound": ""
     },
     {
@@ -773,15 +776,138 @@
     {
       "rank": 12,
       "kind": "roundtrip",
+      "route": "TPA<->GUA",
+      "origin": "TPA",
+      "return_airport": "TPA",
+      "depart_date": "2027-01-15",
+      "return_date": "2027-02-08",
+      "trip_days": 24,
+      "fare_usd": 389,
+      "estimated_bag_usd": 60,
+      "estimated_all_in_usd": 449,
+      "bag_estimate_confidence": "stale",
+      "free_carryon_included": true,
+      "baggage_notes": [
+        "COPA Airlines: STRONG VALUE. Economy Basic has no free checked bag but an added bag is only ~$30 online (vs $45-50 on US legacy carriers). Economy Classic INCLUDES one free checked bag - if Classic costs less than ~$30 more than Basic, take Classic. Free 10kg carry-on AND personal item on every fare including Basic. Checked allowance 23kg/50lb."
+      ],
+      "preference_score": 9,
+      "preference_label": "cheapest-only",
+      "preference_matched": [],
+      "preference_missed": [
+        "far from DEN (1505mi/1505mi)",
+        "not entirely in December",
+        "misses Christmas Day",
+        "home on/after New Year's Eve",
+        "24 days, not 21"
+      ],
+      "airlines": [
+        "COPA"
+      ],
+      "total_stops": 1,
+      "max_layover_min": 230,
+      "overnight_layover": false,
+      "all_december": false,
+      "tags": [
+        "free-carryon",
+        "21+days",
+        "1-stop"
+      ],
+      "outbound_legs": [
+        {
+          "from_airport": "TPA",
+          "to_airport": "PTY",
+          "depart": "2027-01-15T14:30",
+          "arrive": "2027-01-15T17:55",
+          "duration_min": 205,
+          "plane": "Boeing 737"
+        },
+        {
+          "from_airport": "PTY",
+          "to_airport": "GUA",
+          "depart": "2027-01-15T21:45",
+          "arrive": "2027-01-15T23:06",
+          "duration_min": 141,
+          "plane": "Boeing 737"
+        }
+      ],
+      "inbound_legs": [],
+      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMTVqBRIDVFBBcgUSA0dVQRoaEgoyMDI3LTAyLTA4agUSA0dVQXIFEgNUUEFCAQFIAZgBAQ==&hl=en-US&curr=USD",
+      "booking_url_inbound": ""
+    },
+    {
+      "rank": 13,
+      "kind": "roundtrip",
+      "route": "TPA<->GUA",
+      "origin": "TPA",
+      "return_airport": "TPA",
+      "depart_date": "2027-01-15",
+      "return_date": "2027-02-07",
+      "trip_days": 23,
+      "fare_usd": 394,
+      "estimated_bag_usd": 60,
+      "estimated_all_in_usd": 454,
+      "bag_estimate_confidence": "stale",
+      "free_carryon_included": true,
+      "baggage_notes": [
+        "COPA Airlines: STRONG VALUE. Economy Basic has no free checked bag but an added bag is only ~$30 online (vs $45-50 on US legacy carriers). Economy Classic INCLUDES one free checked bag - if Classic costs less than ~$30 more than Basic, take Classic. Free 10kg carry-on AND personal item on every fare including Basic. Checked allowance 23kg/50lb."
+      ],
+      "preference_score": 11,
+      "preference_label": "cheapest-only",
+      "preference_matched": [
+        "23 days (near 21)"
+      ],
+      "preference_missed": [
+        "far from DEN (1505mi/1505mi)",
+        "not entirely in December",
+        "misses Christmas Day",
+        "home on/after New Year's Eve"
+      ],
+      "airlines": [
+        "COPA"
+      ],
+      "total_stops": 1,
+      "max_layover_min": 230,
+      "overnight_layover": false,
+      "all_december": false,
+      "tags": [
+        "free-carryon",
+        "21+days",
+        "1-stop"
+      ],
+      "outbound_legs": [
+        {
+          "from_airport": "TPA",
+          "to_airport": "PTY",
+          "depart": "2027-01-15T14:30",
+          "arrive": "2027-01-15T17:55",
+          "duration_min": 205,
+          "plane": "Boeing 737"
+        },
+        {
+          "from_airport": "PTY",
+          "to_airport": "GUA",
+          "depart": "2027-01-15T21:45",
+          "arrive": "2027-01-15T23:06",
+          "duration_min": 141,
+          "plane": "Boeing 737"
+        }
+      ],
+      "inbound_legs": [],
+      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMTVqBRIDVFBBcgUSA0dVQRoaEgoyMDI3LTAyLTA3agUSA0dVQXIFEgNUUEFCAQFIAZgBAQ==&hl=en-US&curr=USD",
+      "booking_url_inbound": ""
+    },
+    {
+      "rank": 14,
+      "kind": "roundtrip",
       "route": "LGA<->GUA",
       "origin": "LGA",
       "return_airport": "LGA",
       "depart_date": "2027-01-15",
       "return_date": "2027-02-05",
       "trip_days": 21,
-      "fare_usd": 371,
+      "fare_usd": 368,
       "estimated_bag_usd": 90,
-      "estimated_all_in_usd": 461,
+      "estimated_all_in_usd": 458,
       "bag_estimate_confidence": "stale",
       "free_carryon_included": false,
       "baggage_notes": [
@@ -833,7 +959,7 @@
       "booking_url_inbound": ""
     },
     {
-      "rank": 13,
+      "rank": 15,
       "kind": "roundtrip",
       "route": "AUS<->GUA",
       "origin": "AUS",
@@ -896,7 +1022,7 @@
       "booking_url_inbound": ""
     },
     {
-      "rank": 14,
+      "rank": 16,
       "kind": "roundtrip",
       "route": "AUS<->GUA",
       "origin": "AUS",
@@ -959,220 +1085,7 @@
       "booking_url_inbound": ""
     },
     {
-      "rank": 15,
-      "kind": "roundtrip",
-      "route": "FLL<->GUA",
-      "origin": "FLL",
-      "return_airport": "FLL",
-      "depart_date": "2026-11-13",
-      "return_date": "2026-12-04",
-      "trip_days": 21,
-      "fare_usd": 403,
-      "estimated_bag_usd": 60,
-      "estimated_all_in_usd": 463,
-      "bag_estimate_confidence": "stale",
-      "free_carryon_included": true,
-      "baggage_notes": [
-        "COPA Airlines: STRONG VALUE. Economy Basic has no free checked bag but an added bag is only ~$30 online (vs $45-50 on US legacy carriers). Economy Classic INCLUDES one free checked bag - if Classic costs less than ~$30 more than Basic, take Classic. Free 10kg carry-on AND personal item on every fare including Basic. Checked allowance 23kg/50lb."
-      ],
-      "preference_score": 30,
-      "preference_label": "cheapest-only",
-      "preference_matched": [
-        "home before New Year's Eve",
-        "exactly 21 days"
-      ],
-      "preference_missed": [
-        "far from DEN (1702mi/1702mi)",
-        "not entirely in December",
-        "misses Christmas Day"
-      ],
-      "airlines": [
-        "COPA"
-      ],
-      "total_stops": 1,
-      "max_layover_min": 716,
-      "overnight_layover": true,
-      "all_december": false,
-      "tags": [
-        "free-carryon",
-        "21+days",
-        "1-stop",
-        "overnight-layover"
-      ],
-      "outbound_legs": [
-        {
-          "from_airport": "FLL",
-          "to_airport": "PTY",
-          "depart": "2026-11-13T17:11",
-          "arrive": "2026-11-13T20:19",
-          "duration_min": 188,
-          "plane": "Boeing 737"
-        },
-        {
-          "from_airport": "PTY",
-          "to_airport": "GUA",
-          "depart": "2026-11-14T08:15",
-          "arrive": "2026-11-14T09:39",
-          "duration_min": 144,
-          "plane": "Boeing 737"
-        }
-      ],
-      "inbound_legs": [],
-      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMTNqBRIDRkxMcgUSA0dVQRoaEgoyMDI2LTEyLTA0agUSA0dVQXIFEgNGTExCAQFIAZgBAQ==&hl=en-US&curr=USD",
-      "booking_url_inbound": ""
-    },
-    {
-      "rank": 16,
-      "kind": "two-one-ways",
-      "route": "JAX->GUA / GUA->MCO",
-      "origin": "JAX",
-      "return_airport": "MCO",
-      "depart_date": "2026-11-12",
-      "return_date": "2026-12-02",
-      "trip_days": 20,
-      "fare_usd": 369,
-      "estimated_bag_usd": 95,
-      "estimated_all_in_usd": 464,
-      "bag_estimate_confidence": "stale",
-      "free_carryon_included": false,
-      "baggage_notes": [
-        "American Airlines: First checked bag to Central America (except Panama) is $45 online / $50 airport; Basic Economy adds $5, so $50 online. Per person, EACH WAY. Carry-on plus personal item are free on ALL fare types including Basic Economy. Fees updated for tickets issued on/after 2026-05-18.",
-        "United: First checked bag $45 online for US-Central America ($70 range at airport / on some Basic fares). IMPORTANT: Guatemala counts as SHORT-HAUL international, where United Basic Economy allows a PERSONAL ITEM ONLY - no full-size carry-on. The free-carry-on rule people cite applies to transatlantic/transpacific/South America, not Central America. carryon_usd is 0 because it cannot be bought on Basic; you must buy up to a Standard Economy fare."
-      ],
-      "preference_score": 28,
-      "preference_label": "cheapest-only",
-      "preference_matched": [
-        "home before New Year's Eve",
-        "20 days (near 21)"
-      ],
-      "preference_missed": [
-        "far from DEN (1444mi/1544mi)",
-        "not entirely in December",
-        "misses Christmas Day"
-      ],
-      "airlines": [
-        "American",
-        "United"
-      ],
-      "total_stops": 3,
-      "max_layover_min": 676,
-      "overnight_layover": true,
-      "all_december": false,
-      "tags": [
-        "short-20d",
-        "overnight-layover",
-        "open-jaw"
-      ],
-      "outbound_legs": [
-        {
-          "from_airport": "JAX",
-          "to_airport": "CLT",
-          "depart": "2026-11-12T09:42",
-          "arrive": "2026-11-12T11:09",
-          "duration_min": 87,
-          "plane": "Airbus A320"
-        },
-        {
-          "from_airport": "CLT",
-          "to_airport": "MIA",
-          "depart": "2026-11-12T22:25",
-          "arrive": "2026-11-13T00:42",
-          "duration_min": 137,
-          "plane": "Boeing 737"
-        },
-        {
-          "from_airport": "MIA",
-          "to_airport": "GUA",
-          "depart": "2026-11-13T08:31",
-          "arrive": "2026-11-13T10:23",
-          "duration_min": 172,
-          "plane": "Boeing 737MAX 8 Passenger"
-        }
-      ],
-      "inbound_legs": [
-        {
-          "from_airport": "GUA",
-          "to_airport": "IAH",
-          "depart": "2026-12-02T02:10",
-          "arrive": "2026-12-02T05:04",
-          "duration_min": 174,
-          "plane": "Boeing 737MAX 8 Passenger"
-        },
-        {
-          "from_airport": "IAH",
-          "to_airport": "MCO",
-          "depart": "2026-12-02T14:24",
-          "arrive": "2026-12-02T17:46",
-          "duration_min": 142,
-          "plane": "Boeing 737"
-        }
-      ],
-      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMTJqBRIDSkFYcgUSA0dVQUIBAUgBmAEC&hl=en-US&curr=USD",
-      "booking_url_inbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMDJqBRIDR1VBcgUSA01DT0IBAUgBmAEC&hl=en-US&curr=USD"
-    },
-    {
       "rank": 17,
-      "kind": "roundtrip",
-      "route": "TPA<->GUA",
-      "origin": "TPA",
-      "return_airport": "TPA",
-      "depart_date": "2027-01-15",
-      "return_date": "2027-02-05",
-      "trip_days": 21,
-      "fare_usd": 376,
-      "estimated_bag_usd": 90,
-      "estimated_all_in_usd": 466,
-      "bag_estimate_confidence": "stale",
-      "free_carryon_included": false,
-      "baggage_notes": [
-        "United: First checked bag $45 online for US-Central America ($70 range at airport / on some Basic fares). IMPORTANT: Guatemala counts as SHORT-HAUL international, where United Basic Economy allows a PERSONAL ITEM ONLY - no full-size carry-on. The free-carry-on rule people cite applies to transatlantic/transpacific/South America, not Central America. carryon_usd is 0 because it cannot be bought on Basic; you must buy up to a Standard Economy fare."
-      ],
-      "preference_score": 15,
-      "preference_label": "cheapest-only",
-      "preference_matched": [
-        "exactly 21 days"
-      ],
-      "preference_missed": [
-        "far from DEN (1505mi/1505mi)",
-        "not entirely in December",
-        "misses Christmas Day",
-        "home on/after New Year's Eve"
-      ],
-      "airlines": [
-        "United"
-      ],
-      "total_stops": 1,
-      "max_layover_min": 323,
-      "overnight_layover": false,
-      "all_december": false,
-      "tags": [
-        "21+days",
-        "1-stop"
-      ],
-      "outbound_legs": [
-        {
-          "from_airport": "TPA",
-          "to_airport": "IAH",
-          "depart": "2027-01-15T09:40",
-          "arrive": "2027-01-15T11:20",
-          "duration_min": 160,
-          "plane": "Boeing 737"
-        },
-        {
-          "from_airport": "IAH",
-          "to_airport": "GUA",
-          "depart": "2027-01-15T16:43",
-          "arrive": "2027-01-15T19:39",
-          "duration_min": 176,
-          "plane": "Boeing 737MAX 8 Passenger"
-        }
-      ],
-      "inbound_legs": [],
-      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMTVqBRIDVFBBcgUSA0dVQRoaEgoyMDI3LTAyLTA1agUSA0dVQXIFEgNUUEFCAQFIAZgBAQ==&hl=en-US&curr=USD",
-      "booking_url_inbound": ""
-    },
-    {
-      "rank": 18,
       "kind": "two-one-ways",
       "route": "LGA->GUA / GUA->MCO",
       "origin": "LGA",
@@ -1255,151 +1168,63 @@
       "booking_url_inbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMjZqBRIDR1VBcgUSA01DT0IBAUgBmAEC&hl=en-US&curr=USD"
     },
     {
-      "rank": 19,
+      "rank": 18,
       "kind": "two-one-ways",
-      "route": "BOS->GUA / GUA->MCO",
-      "origin": "BOS",
+      "route": "JAX->GUA / GUA->MCO",
+      "origin": "JAX",
       "return_airport": "MCO",
-      "depart_date": "2026-11-18",
-      "return_date": "2026-12-12",
-      "trip_days": 24,
+      "depart_date": "2026-11-12",
+      "return_date": "2026-12-02",
+      "trip_days": 20,
       "fare_usd": 374,
       "estimated_bag_usd": 95,
       "estimated_all_in_usd": 469,
       "bag_estimate_confidence": "stale",
-      "free_carryon_included": true,
+      "free_carryon_included": false,
       "baggage_notes": [
         "American Airlines: First checked bag to Central America (except Panama) is $45 online / $50 airport; Basic Economy adds $5, so $50 online. Per person, EACH WAY. Carry-on plus personal item are free on ALL fare types including Basic Economy. Fees updated for tickets issued on/after 2026-05-18.",
-        "Delta: First checked bag US-Central America $45, second $55; can vary by specific route. Delta permits a full carry-on plus personal item on Basic Economy. Re-verify the carry-on rule at booking, it is the least well sourced field here."
+        "United: First checked bag $45 online for US-Central America ($70 range at airport / on some Basic fares). IMPORTANT: Guatemala counts as SHORT-HAUL international, where United Basic Economy allows a PERSONAL ITEM ONLY - no full-size carry-on. The free-carry-on rule people cite applies to transatlantic/transpacific/South America, not Central America. carryon_usd is 0 because it cannot be bought on Basic; you must buy up to a Standard Economy fare."
       ],
-      "preference_score": 24,
+      "preference_score": 28,
       "preference_label": "cheapest-only",
       "preference_matched": [
-        "home before New Year's Eve"
+        "home before New Year's Eve",
+        "20 days (near 21)"
       ],
       "preference_missed": [
-        "far from DEN (1749mi/1544mi)",
+        "far from DEN (1444mi/1544mi)",
         "not entirely in December",
-        "misses Christmas Day",
-        "24 days, not 21"
+        "misses Christmas Day"
       ],
       "airlines": [
         "American",
-        "Delta"
+        "United"
       ],
       "total_stops": 3,
-      "max_layover_min": 619,
+      "max_layover_min": 676,
       "overnight_layover": true,
       "all_december": false,
       "tags": [
-        "free-carryon",
-        "21+days",
+        "short-20d",
         "overnight-layover",
         "open-jaw"
       ],
       "outbound_legs": [
         {
-          "from_airport": "BOS",
-          "to_airport": "JFK",
-          "depart": "2026-11-18T11:46",
-          "arrive": "2026-11-18T13:14",
-          "duration_min": 88,
-          "plane": "Embraer 175"
+          "from_airport": "JAX",
+          "to_airport": "CLT",
+          "depart": "2026-11-12T09:42",
+          "arrive": "2026-11-12T11:09",
+          "duration_min": 87,
+          "plane": "Airbus A320"
         },
         {
-          "from_airport": "JFK",
+          "from_airport": "CLT",
           "to_airport": "MIA",
-          "depart": "2026-11-18T21:30",
-          "arrive": "2026-11-19T00:45",
-          "duration_min": 195,
-          "plane": "Boeing 737MAX 8 Passenger"
-        },
-        {
-          "from_airport": "MIA",
-          "to_airport": "GUA",
-          "depart": "2026-11-19T08:30",
-          "arrive": "2026-11-19T10:24",
-          "duration_min": 174,
-          "plane": "Boeing 737MAX 8 Passenger"
-        }
-      ],
-      "inbound_legs": [
-        {
-          "from_airport": "GUA",
-          "to_airport": "ATL",
-          "depart": "2026-12-12T15:16",
-          "arrive": "2026-12-12T19:46",
-          "duration_min": 210,
-          "plane": "Boeing 757"
-        },
-        {
-          "from_airport": "ATL",
-          "to_airport": "MCO",
-          "depart": "2026-12-13T06:05",
-          "arrive": "2026-12-13T07:40",
-          "duration_min": 95,
-          "plane": "Boeing 757"
-        }
-      ],
-      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMThqBRIDQk9TcgUSA0dVQUIBAUgBmAEC&hl=en-US&curr=USD",
-      "booking_url_inbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMTJqBRIDR1VBcgUSA01DT0IBAUgBmAEC&hl=en-US&curr=USD"
-    },
-    {
-      "rank": 20,
-      "kind": "roundtrip",
-      "route": "BOS<->GUA",
-      "origin": "BOS",
-      "return_airport": "BOS",
-      "depart_date": "2026-11-12",
-      "return_date": "2026-12-08",
-      "trip_days": 26,
-      "fare_usd": 370,
-      "estimated_bag_usd": 100,
-      "estimated_all_in_usd": 470,
-      "bag_estimate_confidence": "stale",
-      "free_carryon_included": true,
-      "baggage_notes": [
-        "American Airlines: First checked bag to Central America (except Panama) is $45 online / $50 airport; Basic Economy adds $5, so $50 online. Per person, EACH WAY. Carry-on plus personal item are free on ALL fare types including Basic Economy. Fees updated for tickets issued on/after 2026-05-18."
-      ],
-      "preference_score": 19,
-      "preference_label": "cheapest-only",
-      "preference_matched": [
-        "home before New Year's Eve"
-      ],
-      "preference_missed": [
-        "far from DEN (1749mi/1749mi)",
-        "not entirely in December",
-        "misses Christmas Day",
-        "26 days, not 21"
-      ],
-      "airlines": [
-        "American"
-      ],
-      "total_stops": 2,
-      "max_layover_min": 496,
-      "overnight_layover": true,
-      "all_december": false,
-      "tags": [
-        "free-carryon",
-        "21+days",
-        "overnight-layover"
-      ],
-      "outbound_legs": [
-        {
-          "from_airport": "BOS",
-          "to_airport": "JFK",
-          "depart": "2026-11-12T11:46",
-          "arrive": "2026-11-12T13:14",
-          "duration_min": 88,
-          "plane": "Embraer 175"
-        },
-        {
-          "from_airport": "JFK",
-          "to_airport": "MIA",
-          "depart": "2026-11-12T21:30",
-          "arrive": "2026-11-13T00:45",
-          "duration_min": 195,
-          "plane": "Boeing 737MAX 8 Passenger"
+          "depart": "2026-11-12T22:25",
+          "arrive": "2026-11-13T00:42",
+          "duration_min": 137,
+          "plane": "Boeing 737"
         },
         {
           "from_airport": "MIA",
@@ -1410,9 +1235,185 @@
           "plane": "Boeing 737MAX 8 Passenger"
         }
       ],
+      "inbound_legs": [
+        {
+          "from_airport": "GUA",
+          "to_airport": "IAH",
+          "depart": "2026-12-02T02:10",
+          "arrive": "2026-12-02T05:04",
+          "duration_min": 174,
+          "plane": "Boeing 737MAX 8 Passenger"
+        },
+        {
+          "from_airport": "IAH",
+          "to_airport": "MCO",
+          "depart": "2026-12-02T14:24",
+          "arrive": "2026-12-02T17:46",
+          "duration_min": 142,
+          "plane": "Boeing 737"
+        }
+      ],
+      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMTJqBRIDSkFYcgUSA0dVQUIBAUgBmAEC&hl=en-US&curr=USD",
+      "booking_url_inbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMDJqBRIDR1VBcgUSA01DT0IBAUgBmAEC&hl=en-US&curr=USD"
+    },
+    {
+      "rank": 19,
+      "kind": "roundtrip",
+      "route": "FLL<->GUA",
+      "origin": "FLL",
+      "return_airport": "FLL",
+      "depart_date": "2026-11-30",
+      "return_date": "2026-12-21",
+      "trip_days": 21,
+      "fare_usd": 374,
+      "estimated_bag_usd": 100,
+      "estimated_all_in_usd": 474,
+      "bag_estimate_confidence": "stale",
+      "free_carryon_included": true,
+      "baggage_notes": [
+        "Avianca: Light/XS/S fares include NO free checked bag; first bag ~$50 added online 48h+ before departure, rising to ~$120 at the airport. Since 2026-01-27 Basic includes a free 10kg carry-on on international routes. Book bags online early - the airport price is more than double."
+      ],
+      "preference_score": 30,
+      "preference_label": "cheapest-only",
+      "preference_matched": [
+        "home before New Year's Eve",
+        "exactly 21 days"
+      ],
+      "preference_missed": [
+        "far from DEN (1702mi/1702mi)",
+        "not entirely in December",
+        "misses Christmas Day"
+      ],
+      "airlines": [
+        "Avianca"
+      ],
+      "total_stops": 1,
+      "max_layover_min": 875,
+      "overnight_layover": true,
+      "all_december": false,
+      "tags": [
+        "free-carryon",
+        "21+days",
+        "1-stop",
+        "overnight-layover"
+      ],
+      "outbound_legs": [
+        {
+          "from_airport": "FLL",
+          "to_airport": "BOG",
+          "depart": "2026-11-30T16:25",
+          "arrive": "2026-11-30T20:05",
+          "duration_min": 220,
+          "plane": "Airbus A320"
+        },
+        {
+          "from_airport": "BOG",
+          "to_airport": "GUA",
+          "depart": "2026-12-01T10:40",
+          "arrive": "2026-12-01T13:05",
+          "duration_min": 205,
+          "plane": "Airbus A320"
+        }
+      ],
       "inbound_legs": [],
-      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMTJqBRIDQk9TcgUSA0dVQRoaEgoyMDI2LTEyLTA4agUSA0dVQXIFEgNCT1NCAQFIAZgBAQ==&hl=en-US&curr=USD",
+      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMzBqBRIDRkxMcgUSA0dVQRoaEgoyMDI2LTEyLTIxagUSA0dVQXIFEgNGTExCAQFIAZgBAQ==&hl=en-US&curr=USD",
       "booking_url_inbound": ""
+    },
+    {
+      "rank": 20,
+      "kind": "two-one-ways",
+      "route": "BDL->GUA / GUA->MCO",
+      "origin": "BDL",
+      "return_airport": "MCO",
+      "depart_date": "2027-01-12",
+      "return_date": "2027-02-04",
+      "trip_days": 23,
+      "fare_usd": 375,
+      "estimated_bag_usd": 100,
+      "estimated_all_in_usd": 475,
+      "bag_estimate_confidence": "stale",
+      "free_carryon_included": true,
+      "baggage_notes": [
+        "American Airlines: First checked bag to Central America (except Panama) is $45 online / $50 airport; Basic Economy adds $5, so $50 online. Per person, EACH WAY. Carry-on plus personal item are free on ALL fare types including Basic Economy. Fees updated for tickets issued on/after 2026-05-18."
+      ],
+      "preference_score": 11,
+      "preference_label": "cheapest-only",
+      "preference_matched": [
+        "23 days (near 21)"
+      ],
+      "preference_missed": [
+        "far from DEN (1667mi/1544mi)",
+        "not entirely in December",
+        "misses Christmas Day",
+        "home on/after New Year's Eve"
+      ],
+      "airlines": [
+        "American"
+      ],
+      "total_stops": 4,
+      "max_layover_min": 720,
+      "overnight_layover": true,
+      "all_december": false,
+      "tags": [
+        "free-carryon",
+        "21+days",
+        "overnight-layover",
+        "open-jaw"
+      ],
+      "outbound_legs": [
+        {
+          "from_airport": "BDL",
+          "to_airport": "DCA",
+          "depart": "2027-01-12T19:30",
+          "arrive": "2027-01-12T21:30",
+          "duration_min": 120,
+          "plane": "Canadair RJ 900"
+        },
+        {
+          "from_airport": "DCA",
+          "to_airport": "MIA",
+          "depart": "2027-01-13T09:30",
+          "arrive": "2027-01-13T12:34",
+          "duration_min": 184,
+          "plane": "Boeing 737MAX 8 Passenger"
+        },
+        {
+          "from_airport": "MIA",
+          "to_airport": "GUA",
+          "depart": "2027-01-13T18:44",
+          "arrive": "2027-01-13T20:40",
+          "duration_min": 176,
+          "plane": "Boeing 737"
+        }
+      ],
+      "inbound_legs": [
+        {
+          "from_airport": "GUA",
+          "to_airport": "MIA",
+          "depart": "2027-02-04T06:00",
+          "arrive": "2027-02-04T09:46",
+          "duration_min": 166,
+          "plane": "Boeing 737"
+        },
+        {
+          "from_airport": "MIA",
+          "to_airport": "CLT",
+          "depart": "2027-02-04T11:36",
+          "arrive": "2027-02-04T13:51",
+          "duration_min": 135,
+          "plane": "Boeing 737"
+        },
+        {
+          "from_airport": "CLT",
+          "to_airport": "MCO",
+          "depart": "2027-02-04T21:54",
+          "arrive": "2027-02-04T23:43",
+          "duration_min": 109,
+          "plane": "Airbus A321"
+        }
+      ],
+      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMTJqBRIDQkRMcgUSA0dVQUIBAUgBmAEC&hl=en-US&curr=USD",
+      "booking_url_inbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDItMDRqBRIDR1VBcgUSA01DT0IBAUgBmAEC&hl=en-US&curr=USD"
     },
     {
       "rank": 21,
@@ -1423,9 +1424,9 @@
       "depart_date": "2026-11-12",
       "return_date": "2026-12-08",
       "trip_days": 26,
-      "fare_usd": 373,
+      "fare_usd": 378,
       "estimated_bag_usd": 99,
-      "estimated_all_in_usd": 472,
+      "estimated_all_in_usd": 477,
       "bag_estimate_confidence": "stale",
       "free_carryon_included": true,
       "baggage_notes": [
@@ -1506,132 +1507,6 @@
     },
     {
       "rank": 22,
-      "kind": "roundtrip",
-      "route": "FLL<->GUA",
-      "origin": "FLL",
-      "return_airport": "FLL",
-      "depart_date": "2026-12-28",
-      "return_date": "2027-01-18",
-      "trip_days": 21,
-      "fare_usd": 374,
-      "estimated_bag_usd": 100,
-      "estimated_all_in_usd": 474,
-      "bag_estimate_confidence": "stale",
-      "free_carryon_included": true,
-      "baggage_notes": [
-        "Avianca: Light/XS/S fares include NO free checked bag; first bag ~$50 added online 48h+ before departure, rising to ~$120 at the airport. Since 2026-01-27 Basic includes a free 10kg carry-on on international routes. Book bags online early - the airport price is more than double."
-      ],
-      "preference_score": 15,
-      "preference_label": "cheapest-only",
-      "preference_matched": [
-        "exactly 21 days"
-      ],
-      "preference_missed": [
-        "far from DEN (1702mi/1702mi)",
-        "not entirely in December",
-        "misses Christmas Day",
-        "home on/after New Year's Eve"
-      ],
-      "airlines": [
-        "Avianca"
-      ],
-      "total_stops": 1,
-      "max_layover_min": 875,
-      "overnight_layover": true,
-      "all_december": false,
-      "tags": [
-        "free-carryon",
-        "21+days",
-        "1-stop",
-        "overnight-layover"
-      ],
-      "outbound_legs": [
-        {
-          "from_airport": "FLL",
-          "to_airport": "BOG",
-          "depart": "2026-12-28T16:25",
-          "arrive": "2026-12-28T20:05",
-          "duration_min": 220,
-          "plane": "Airbus A320"
-        },
-        {
-          "from_airport": "BOG",
-          "to_airport": "GUA",
-          "depart": "2026-12-29T10:40",
-          "arrive": "2026-12-29T13:05",
-          "duration_min": 205,
-          "plane": "Airbus A320"
-        }
-      ],
-      "inbound_legs": [],
-      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMjhqBRIDRkxMcgUSA0dVQRoaEgoyMDI3LTAxLTE4agUSA0dVQXIFEgNGTExCAQFIAZgBAQ==&hl=en-US&curr=USD",
-      "booking_url_inbound": ""
-    },
-    {
-      "rank": 23,
-      "kind": "roundtrip",
-      "route": "MCO<->GUA",
-      "origin": "MCO",
-      "return_airport": "MCO",
-      "depart_date": "2027-01-14",
-      "return_date": "2027-02-04",
-      "trip_days": 21,
-      "fare_usd": 390,
-      "estimated_bag_usd": 90,
-      "estimated_all_in_usd": 480,
-      "bag_estimate_confidence": "stale",
-      "free_carryon_included": true,
-      "baggage_notes": [
-        "Delta: First checked bag US-Central America $45, second $55; can vary by specific route. Delta permits a full carry-on plus personal item on Basic Economy. Re-verify the carry-on rule at booking, it is the least well sourced field here."
-      ],
-      "preference_score": 15,
-      "preference_label": "cheapest-only",
-      "preference_matched": [
-        "exactly 21 days"
-      ],
-      "preference_missed": [
-        "far from DEN (1544mi/1544mi)",
-        "not entirely in December",
-        "misses Christmas Day",
-        "home on/after New Year's Eve"
-      ],
-      "airlines": [
-        "Delta"
-      ],
-      "total_stops": 1,
-      "max_layover_min": 707,
-      "overnight_layover": true,
-      "all_december": false,
-      "tags": [
-        "free-carryon",
-        "21+days",
-        "1-stop",
-        "overnight-layover"
-      ],
-      "outbound_legs": [
-        {
-          "from_airport": "MCO",
-          "to_airport": "ATL",
-          "depart": "2027-01-14T20:45",
-          "arrive": "2027-01-14T22:23",
-          "duration_min": 98,
-          "plane": "Airbus A321"
-        },
-        {
-          "from_airport": "ATL",
-          "to_airport": "GUA",
-          "depart": "2027-01-15T10:10",
-          "arrive": "2027-01-15T12:45",
-          "duration_min": 215,
-          "plane": "Boeing 757"
-        }
-      ],
-      "inbound_legs": [],
-      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDEtMTRqBRIDTUNPcgUSA0dVQRoaEgoyMDI3LTAyLTA0agUSA0dVQXIFEgNNQ09CAQFIAZgBAQ==&hl=en-US&curr=USD",
-      "booking_url_inbound": ""
-    },
-    {
-      "rank": 24,
       "kind": "two-one-ways",
       "route": "LGA->GUA / GUA->EWR",
       "origin": "LGA",
@@ -1692,26 +1567,26 @@
       "inbound_legs": [
         {
           "from_airport": "GUA",
-          "to_airport": "ORD",
-          "depart": "2026-12-24T13:28",
-          "arrive": "2026-12-24T18:15",
-          "duration_min": 287,
+          "to_airport": "IAH",
+          "depart": "2026-12-24T02:10",
+          "arrive": "2026-12-24T05:04",
+          "duration_min": 174,
           "plane": "Boeing 737MAX 8 Passenger"
         },
         {
-          "from_airport": "ORD",
+          "from_airport": "IAH",
           "to_airport": "EWR",
-          "depart": "2026-12-24T19:55",
-          "arrive": "2026-12-24T23:14",
-          "duration_min": 139,
-          "plane": "Airbus A321neo"
+          "depart": "2026-12-24T09:35",
+          "arrive": "2026-12-24T14:10",
+          "duration_min": 215,
+          "plane": "Boeing 737"
         }
       ],
       "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMDVqBRIDTEdBcgUSA0dVQUIBAUgBmAEC&hl=en-US&curr=USD",
       "booking_url_inbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMjRqBRIDR1VBcgUSA0VXUkIBAUgBmAEC&hl=en-US&curr=USD"
     },
     {
-      "rank": 25,
+      "rank": 23,
       "kind": "two-one-ways",
       "route": "LGA->GUA / GUA->TPA",
       "origin": "LGA",
@@ -1791,45 +1666,43 @@
       "booking_url_inbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMjRqBRIDR1VBcgUSA1RQQUIBAUgBmAEC&hl=en-US&curr=USD"
     },
     {
-      "rank": 26,
+      "rank": 24,
       "kind": "two-one-ways",
-      "route": "LGA->GUA / GUA->DEN",
+      "route": "LGA->GUA / GUA->BOS",
       "origin": "LGA",
-      "return_airport": "DEN",
+      "return_airport": "BOS",
       "depart_date": "2026-12-05",
-      "return_date": "2026-12-27",
-      "trip_days": 22,
-      "fare_usd": 529,
+      "return_date": "2026-12-24",
+      "trip_days": 19,
+      "fare_usd": 393,
       "estimated_bag_usd": 90,
-      "estimated_all_in_usd": 619,
+      "estimated_all_in_usd": 483,
       "bag_estimate_confidence": "stale",
       "free_carryon_included": false,
       "baggage_notes": [
         "United: First checked bag $45 online for US-Central America ($70 range at airport / on some Basic fares). IMPORTANT: Guatemala counts as SHORT-HAUL international, where United Basic Economy allows a PERSONAL ITEM ONLY - no full-size carry-on. The free-carry-on rule people cite applies to transatlantic/transpacific/South America, not Central America. carryon_usd is 0 because it cannot be bought on Basic; you must buy up to a Standard Economy fare."
       ],
-      "preference_score": 80,
-      "preference_label": "close",
+      "preference_score": 46,
+      "preference_label": "partial",
       "preference_matched": [
-        "one end at DEN",
         "entirely in December",
-        "includes Christmas Day",
         "home before New Year's Eve",
-        "22 days (near 21)"
+        "19 days (near 21)"
       ],
       "preference_missed": [
-        "other end 1615mi away"
+        "far from DEN (1615mi/1749mi)",
+        "misses Christmas Day"
       ],
       "airlines": [
         "United"
       ],
       "total_stops": 2,
-      "max_layover_min": 1436,
+      "max_layover_min": 1391,
       "overnight_layover": true,
       "all_december": true,
       "tags": [
-        "pref-close",
         "all-december",
-        "21+days",
+        "short-19d",
         "overnight-layover",
         "open-jaw"
       ],
@@ -1855,22 +1728,164 @@
         {
           "from_airport": "GUA",
           "to_airport": "IAH",
-          "depart": "2026-12-27T02:10",
-          "arrive": "2026-12-27T05:04",
+          "depart": "2026-12-24T07:00",
+          "arrive": "2026-12-24T10:03",
+          "duration_min": 183,
+          "plane": "Boeing 737MAX 8 Passenger"
+        },
+        {
+          "from_airport": "IAH",
+          "to_airport": "BOS",
+          "depart": "2026-12-24T16:20",
+          "arrive": "2026-12-24T21:05",
+          "duration_min": 225,
+          "plane": "Boeing 737"
+        }
+      ],
+      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMDVqBRIDTEdBcgUSA0dVQUIBAUgBmAEC&hl=en-US&curr=USD",
+      "booking_url_inbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMjRqBRIDR1VBcgUSA0JPU0IBAUgBmAEC&hl=en-US&curr=USD"
+    },
+    {
+      "rank": 25,
+      "kind": "two-one-ways",
+      "route": "LGA->GUA / GUA->LGA",
+      "origin": "LGA",
+      "return_airport": "LGA",
+      "depart_date": "2026-12-05",
+      "return_date": "2026-12-24",
+      "trip_days": 19,
+      "fare_usd": 393,
+      "estimated_bag_usd": 90,
+      "estimated_all_in_usd": 483,
+      "bag_estimate_confidence": "stale",
+      "free_carryon_included": false,
+      "baggage_notes": [
+        "United: First checked bag $45 online for US-Central America ($70 range at airport / on some Basic fares). IMPORTANT: Guatemala counts as SHORT-HAUL international, where United Basic Economy allows a PERSONAL ITEM ONLY - no full-size carry-on. The free-carry-on rule people cite applies to transatlantic/transpacific/South America, not Central America. carryon_usd is 0 because it cannot be bought on Basic; you must buy up to a Standard Economy fare."
+      ],
+      "preference_score": 46,
+      "preference_label": "partial",
+      "preference_matched": [
+        "entirely in December",
+        "home before New Year's Eve",
+        "19 days (near 21)"
+      ],
+      "preference_missed": [
+        "far from DEN (1615mi/1615mi)",
+        "misses Christmas Day"
+      ],
+      "airlines": [
+        "United"
+      ],
+      "total_stops": 2,
+      "max_layover_min": 1391,
+      "overnight_layover": true,
+      "all_december": true,
+      "tags": [
+        "all-december",
+        "short-19d",
+        "overnight-layover"
+      ],
+      "outbound_legs": [
+        {
+          "from_airport": "LGA",
+          "to_airport": "IAH",
+          "depart": "2026-12-05T17:40",
+          "arrive": "2026-12-05T20:53",
+          "duration_min": 253,
+          "plane": "Boeing 737"
+        },
+        {
+          "from_airport": "IAH",
+          "to_airport": "GUA",
+          "depart": "2026-12-06T20:04",
+          "arrive": "2026-12-06T23:00",
+          "duration_min": 176,
+          "plane": "Boeing 737MAX 8 Passenger"
+        }
+      ],
+      "inbound_legs": [
+        {
+          "from_airport": "GUA",
+          "to_airport": "IAH",
+          "depart": "2026-12-24T02:10",
+          "arrive": "2026-12-24T05:04",
           "duration_min": 174,
           "plane": "Boeing 737MAX 8 Passenger"
         },
         {
           "from_airport": "IAH",
-          "to_airport": "DEN",
-          "depart": "2026-12-28T05:00",
-          "arrive": "2026-12-28T06:38",
-          "duration_min": 158,
-          "plane": "Airbus A321neo"
+          "to_airport": "LGA",
+          "depart": "2026-12-24T16:20",
+          "arrive": "2026-12-24T20:49",
+          "duration_min": 209,
+          "plane": "Boeing 737"
         }
       ],
       "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMDVqBRIDTEdBcgUSA0dVQUIBAUgBmAEC&hl=en-US&curr=USD",
-      "booking_url_inbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMjdqBRIDR1VBcgUSA0RFTkIBAUgBmAEC&hl=en-US&curr=USD"
+      "booking_url_inbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMjRqBRIDR1VBcgUSA0xHQUIBAUgBmAEC&hl=en-US&curr=USD"
+    },
+    {
+      "rank": 26,
+      "kind": "roundtrip",
+      "route": "DEN<->GUA",
+      "origin": "DEN",
+      "return_airport": "DEN",
+      "depart_date": "2026-11-13",
+      "return_date": "2026-12-04",
+      "trip_days": 21,
+      "fare_usd": 565,
+      "estimated_bag_usd": 60,
+      "estimated_all_in_usd": 625,
+      "bag_estimate_confidence": "stale",
+      "free_carryon_included": true,
+      "baggage_notes": [
+        "COPA Airlines: STRONG VALUE. Economy Basic has no free checked bag but an added bag is only ~$30 online (vs $45-50 on US legacy carriers). Economy Classic INCLUDES one free checked bag - if Classic costs less than ~$30 more than Basic, take Classic. Free 10kg carry-on AND personal item on every fare including Basic. Checked allowance 23kg/50lb."
+      ],
+      "preference_score": 65,
+      "preference_label": "close",
+      "preference_matched": [
+        "both ends at DEN",
+        "home before New Year's Eve",
+        "exactly 21 days"
+      ],
+      "preference_missed": [
+        "not entirely in December",
+        "misses Christmas Day"
+      ],
+      "airlines": [
+        "COPA"
+      ],
+      "total_stops": 1,
+      "max_layover_min": 112,
+      "overnight_layover": false,
+      "all_december": false,
+      "tags": [
+        "pref-close",
+        "free-carryon",
+        "21+days",
+        "1-stop"
+      ],
+      "outbound_legs": [
+        {
+          "from_airport": "DEN",
+          "to_airport": "PTY",
+          "depart": "2026-11-13T21:49",
+          "arrive": "2026-11-14T05:33",
+          "duration_min": 344,
+          "plane": "Boeing 737"
+        },
+        {
+          "from_airport": "PTY",
+          "to_airport": "GUA",
+          "depart": "2026-11-14T07:25",
+          "arrive": "2026-11-14T08:46",
+          "duration_min": 141,
+          "plane": "Boeing 737MAX 8 Passenger"
+        }
+      ],
+      "inbound_legs": [],
+      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTEtMTNqBRIDREVOcgUSA0dVQRoaEgoyMDI2LTEyLTA0agUSA0dVQXIFEgNERU5CAQFIAZgBAQ==&hl=en-US&curr=USD",
+      "booking_url_inbound": ""
     },
     {
       "rank": 27,
@@ -1878,12 +1893,12 @@
       "route": "DEN<->GUA",
       "origin": "DEN",
       "return_airport": "DEN",
-      "depart_date": "2026-12-07",
-      "return_date": "2026-12-28",
+      "depart_date": "2026-12-06",
+      "return_date": "2026-12-27",
       "trip_days": 21,
-      "fare_usd": 553,
+      "fare_usd": 574,
       "estimated_bag_usd": 90,
-      "estimated_all_in_usd": 643,
+      "estimated_all_in_usd": 664,
       "bag_estimate_confidence": "stale",
       "free_carryon_included": false,
       "baggage_notes": [
@@ -1903,23 +1918,24 @@
         "United"
       ],
       "total_stops": 1,
-      "max_layover_min": 335,
-      "overnight_layover": false,
+      "max_layover_min": 1004,
+      "overnight_layover": true,
       "all_december": true,
       "tags": [
         "pref-ideal",
         "all-december",
         "21+days",
-        "1-stop"
+        "1-stop",
+        "overnight-layover"
       ],
       "outbound_legs": [
         {
           "from_airport": "DEN",
           "to_airport": "IAH",
-          "depart": "2026-12-07T07:40",
-          "arrive": "2026-12-07T11:08",
-          "duration_min": 148,
-          "plane": "Boeing 777"
+          "depart": "2026-12-06T20:39",
+          "arrive": "2026-12-06T23:59",
+          "duration_min": 140,
+          "plane": "Boeing 737"
         },
         {
           "from_airport": "IAH",
@@ -1931,7 +1947,7 @@
         }
       ],
       "inbound_legs": [],
-      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMDdqBRIDREVOcgUSA0dVQRoaEgoyMDI2LTEyLTI4agUSA0dVQXIFEgNERU5CAQFIAZgBAQ==&hl=en-US&curr=USD",
+      "booking_url_outbound": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjYtMTItMDZqBRIDREVOcgUSA0dVQRoaEgoyMDI2LTEyLTI3agUSA0dVQXIFEgNERU5CAQFIAZgBAQ==&hl=en-US&curr=USD",
       "booking_url_inbound": ""
     }
   ]
