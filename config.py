@@ -18,10 +18,10 @@ EARLIEST_DEPART = date(2026, 11, 10)
 LATEST_DEPART = date(2027, 1, 15)
 LATEST_RETURN = date(2027, 2, 8)
 
-# 21+ days is the goal, but a big enough saving justifies 19. Options below 21
-# are tagged "short-NNd" so the tradeoff is always visible rather than silently
-# swapped in -- a 19-day trip should only ever win by being dramatically
-# cheaper, and you get to decide what "dramatically" means.
+# 21-28 days is the desirable band, all of it equally. Trips of 19-20 days are
+# still SEARCHED and still reported -- they occasionally carry the cheapest
+# fare, and hiding a bargain was never acceptable -- but they earn zero
+# desirability credit and are tagged "short-NNd" so the tradeoff is visible.
 MIN_TRIP_DAYS = 19
 MAX_TRIP_DAYS = 28
 PREFERRED_MIN_TRIP_DAYS = 21
@@ -104,7 +104,11 @@ TOP_N_REFINE = 30        # round-trip candidates promoted to the refine stage
 # you choose. A trip matching none of these still gets reported and still
 # triggers an alert if it is under the price target.
 IDEAL_MONTH = (2026, 12)          # whole trip inside December 2026
-IDEAL_TRIP_DAYS = 21
+# The whole 21-28 band is equally desirable -- a 28-day trip is not "worse"
+# than a 21-day one, it is simply longer. Scoring a single ideal point made
+# 28 days score 0/15 for length, exactly the same as a trip outside the range,
+# which quietly pushed the ranking toward 21 for no reason the traveler holds.
+DESIRABLE_TRIP_DAYS = (21, 28)
 HOME_AIRPORT = "DEN"              # Denver International, most-preferred endpoint
 HOME_RADIUS_MILES = 1000          # second-best: anything this close to DEN
 

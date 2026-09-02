@@ -96,11 +96,16 @@ class PreferenceMatch:
     location_note: str
     matched: list[str] = field(default_factory=list)
     missed: list[str] = field(default_factory=list)
+    length_in_band: bool = True
 
     @property
     def label(self) -> str:
-        if self.score >= 85:
+        if self.score >= 85 and self.length_in_band:
             return "ideal"
+        # A trip outside the desirable length band can never be "ideal",
+        # however well it scores elsewhere. Without this a 20-day trip that
+        # nails every other preference still reads as ideal, which is exactly
+        # the bias the flat band was meant to remove.
         if self.score >= 60:
             return "close"
         if self.score >= 35:
@@ -150,15 +155,15 @@ def evaluate(origin: str, return_airport: str,
     else:
         missed.append("home on/after New Year's Eve")
 
-    # Trip length: full credit at 21 days, tapering to zero 7 days either side.
-    off = abs(trip_days - config.IDEAL_TRIP_DAYS)
-    len_score = 15.0 * max(0.0, 1 - off / 7)
-    if off == 0:
-        matched.append("exactly 21 days")
-    elif off <= 2:
-        matched.append(f"{trip_days} days (near 21)")
+    # Trip length: flat full credit anywhere inside the desirable band. Every
+    # length in 21-28 is equally fine, so none of them should out-rank another.
+    lo, hi = config.DESIRABLE_TRIP_DAYS
+    if lo <= trip_days <= hi:
+        len_score = 15.0
+        matched.append(f"{trip_days} days")
     else:
-        missed.append(f"{trip_days} days, not 21")
+        len_score = 0.0
+        missed.append(f"{trip_days} days, outside {lo}-{hi}")
 
     score = loc + (20 if dec else 0) + (15 if has_xmas else 0) \
         + (15 if before_nye else 0) + len_score
@@ -167,4 +172,5 @@ def evaluate(origin: str, return_airport: str,
         score=int(round(score)),
         location_note=f"{origin}({out_n}) / {return_airport}({back_n})",
         matched=matched, missed=missed,
+        length_in_band=(lo <= trip_days <= hi),
     )

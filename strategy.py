@@ -171,8 +171,9 @@ def _make_option(out_q: Quote, in_q: Quote | None, policies) -> TripOption | Non
         opt.tags.append("free-carryon")
     if opt.all_december:
         opt.tags.append("all-december")
-    if days >= 21:
-        opt.tags.append("21+days")
+    lo, hi = config.DESIRABLE_TRIP_DAYS
+    if lo <= days <= hi:
+        opt.tags.append(f"{days}d-in-band")
     else:
         opt.tags.append(f"short-{days}d")
     if stops == 0:
@@ -292,7 +293,8 @@ def shortlist(options: list[TripOption], n: int = 30) -> list[TripOption]:
     take([o for o in ranked if o.all_december], 5)
 
     # 3. cheapest that keeps the full 21+ days
-    take([o for o in ranked if o.trip_days >= 21], 5)
+    take([o for o in ranked if config.DESIRABLE_TRIP_DAYS[0] <= o.trip_days
+                                       <= config.DESIRABLE_TRIP_DAYS[1]], 5)
 
     # 4. cheapest with minimal connections
     take([o for o in ranked if o.total_stops <= 1], 4)

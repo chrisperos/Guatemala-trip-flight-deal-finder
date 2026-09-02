@@ -290,7 +290,8 @@ def export_shortlist(short: list[strategy.TripOption], meta: dict) -> None:
             "home_airport": config.HOME_AIRPORT,
             "second_best": f"any airport within {config.HOME_RADIUS_MILES} "
                            f"miles of {config.HOME_AIRPORT}",
-            "ideal_trip_days": config.IDEAL_TRIP_DAYS,
+            "desirable_trip_days": ("any length from %d to %d, all equally "
+                                    "good") % config.DESIRABLE_TRIP_DAYS,
             "whole_trip_inside": "December 2026",
             "include_christmas_day": True,
             "home_before_new_years_eve": True,
