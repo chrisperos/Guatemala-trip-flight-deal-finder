@@ -1,6 +1,6 @@
 # Guatemala flight scan
 
-75,185 trip combinations across 90 US airports, 2026-09-10T19:37:34+00:00 UTC.
+73,499 trip combinations across 90 US airports, 2026-09-11T19:39:58+00:00 UTC.
 
 All-in = Google Flights fare + ESTIMATED checked bag. Rows marked `guess` use a pessimistic placeholder and need verifying.
 
@@ -11,25 +11,24 @@ All-in = Google Flights fare + ESTIMATED checked bag. Rows marked `guess` use a 
 | 3 | **$427** | 15 cheapest-only | $367 | $60 | FLL<->GUA | 2027-01-13 -> 2027-02-04 | 22 | COPA | 1 | stale |
 | 4 | **$427** | 15 cheapest-only | $367 | $60 | FLL<->GUA | 2027-01-13 -> 2027-02-06 | 24 | COPA | 1 | stale |
 | 5 | **$437** | 15 cheapest-only | $377 | $60 | FLL<->GUA | 2027-01-14 -> 2027-02-04 | 21 | COPA | 1 | stale |
-| 6 | **$445** | 30 cheapest-only | $385 | $60 | FLL<->GUA | 2026-11-18 -> 2026-12-09 | 21 | COPA | 1 | stale |
-| 7 | **$452** | 30 cheapest-only | $392 | $60 | FLL<->GUA | 2026-11-17 -> 2026-12-08 | 21 | COPA | 1 | stale |
-| 8 | **$452** | 30 cheapest-only | $392 | $60 | FLL<->GUA | 2026-11-17 -> 2026-12-09 | 22 | COPA | 1 | stale |
-| 9 | **$456** | 15 cheapest-only | $356 | $100 | TPA<->GUA | 2026-11-14 -> 2026-12-03 | 19 | American | 2 | stale |
-| 10 | **$456** | 30 cheapest-only | $356 | $100 | TPA<->GUA | 2026-11-14 -> 2026-12-08 | 24 | American | 2 | stale |
-| 11 | **$469** | 30 cheapest-only | $374 | $95 | TPA->GUA / GUA->MCO | 2026-11-14 -> 2026-12-05 | 21 | American, United | 3 | stale |
-| 12 | **$469** | 30 cheapest-only | $374 | $95 | TPA->GUA / GUA->MCO | 2026-11-14 -> 2026-12-09 | 25 | American, Delta | 3 | stale |
-| 13 | **$472** | 30 cheapest-only | $412 | $60 | TPA<->GUA | 2026-11-22 -> 2026-12-13 | 21 | COPA | 1 | stale |
-| 14 | **$474** | 30 cheapest-only | $361 | $113 | TPA->GUA / GUA->MCO | 2026-11-14 -> 2026-12-08 | 24 | American, Frontier | 3 | stale |
-| 15 | **$482** | 15 cheapest-only | $422 | $60 | TPA<->GUA | 2026-11-17 -> 2026-12-06 | 19 | COPA | 2 | stale |
-| 16 | **$482** | 15 cheapest-only | $422 | $60 | TPA<->GUA | 2026-11-17 -> 2026-12-07 | 20 | COPA | 2 | stale |
-| 17 | **$503** | 65 close | $408 | $95 | TPA->GUA / GUA->MCO | 2026-12-05 -> 2026-12-26 | 21 | American, Delta | 3 | stale |
-| 18 | **$503** | 30 cheapest-only | $413 | $90 | BNA->GUA / GUA->MCO | 2026-11-27 -> 2026-12-19 | 22 | United, Delta | 2 | stale |
-| 19 | **$506** | 15 cheapest-only | $416 | $90 | MCO<->GUA | 2027-01-14 -> 2027-02-04 | 21 | Delta | 1 | stale |
-| 20 | **$506** | 30 cheapest-only | $398 | $108 | TPA->GUA / GUA->JAX | 2026-12-24 -> 2027-01-21 | 28 | Frontier, United | 2 | stale |
-| 21 | **$509** | 35 partial | $409 | $100 | TPA->GUA / GUA->MCO | 2026-12-05 -> 2026-12-24 | 19 | American | 4 | stale |
-| 22 | **$509** | 15 cheapest-only | $419 | $90 | EWR<->GUA | 2027-01-14 -> 2027-02-04 | 21 | United | 1 | stale |
-| 23 | **$512** | 35 partial | $417 | $95 | TPA->GUA / GUA->EWR | 2026-12-05 -> 2026-12-24 | 19 | American, United | 3 | stale |
-| 24 | **$512** | 35 partial | $417 | $95 | TPA->GUA / GUA->TPA | 2026-12-05 -> 2026-12-24 | 19 | American, United | 3 | stale |
-| 25 | **$512** | 35 partial | $417 | $95 | TPA->GUA / GUA->BOS | 2026-12-05 -> 2026-12-24 | 19 | American, United | 3 | stale |
-| 26 | **$600** | 65 close | $510 | $90 | DEN<->GUA | 2026-11-15 -> 2026-12-06 | 21 | United | 1 | stale |
-| 27 | **$690** | 100 ideal | $590 | $100 | DEN<->GUA | 2026-12-07 -> 2026-12-28 | 21 | American | 2 | stale |
+| 6 | **$437** | 15 cheapest-only | $377 | $60 | FLL<->GUA | 2027-01-14 -> 2027-02-06 | 23 | COPA | 1 | stale |
+| 7 | **$446** | 0 cheapest-only | $386 | $60 | TPA<->GUA | 2027-01-14 -> 2027-02-02 | 19 | COPA | 1 | stale |
+| 8 | **$463** | 30 cheapest-only | $403 | $60 | FLL<->GUA | 2026-11-23 -> 2026-12-14 | 21 | COPA | 1 | stale |
+| 9 | **$464** | 15 cheapest-only | $404 | $60 | TPA<->GUA | 2027-01-14 -> 2027-02-06 | 23 | COPA | 1 | stale |
+| 10 | **$466** | 15 cheapest-only | $366 | $100 | EWR<->GUA | 2026-11-16 -> 2026-12-05 | 19 | American | 2 | stale |
+| 11 | **$474** | 15 cheapest-only | $374 | $100 | TPA<->GUA | 2027-01-14 -> 2027-02-04 | 21 | Avianca | 1 | stale |
+| 12 | **$490** | 30 cheapest-only | $395 | $95 | PIT->GUA / GUA->MCO | 2026-11-12 -> 2026-12-05 | 23 | American, United | 3 | stale |
+| 13 | **$490** | 30 cheapest-only | $395 | $95 | PIT->GUA / GUA->MCO | 2026-11-12 -> 2026-12-09 | 27 | American, Delta | 3 | stale |
+| 14 | **$497** | 30 cheapest-only | $398 | $99 | PIT->GUA / GUA->BOS | 2026-11-12 -> 2026-12-09 | 27 | American, JetBlue | 3 | stale |
+| 15 | **$523** | 25 cheapest-only | $410 | $113 | BDL->GUA / GUA->AUS | 2027-01-12 -> 2027-02-06 | 25 | American, Frontier | 3 | stale |
+| 16 | **$524** | 65 close | $429 | $95 | TPA->GUA / GUA->MCO | 2026-12-05 -> 2026-12-26 | 21 | American, Delta | 3 | stale |
+| 17 | **$530** | 15 cheapest-only | $440 | $90 | GSO->GUA / GUA->MCO | 2027-01-01 -> 2027-01-25 | 24 | United | 2 | stale |
+| 18 | **$531** | 35 partial | $432 | $99 | TPA->GUA / GUA->BOS | 2026-12-05 -> 2026-12-24 | 19 | American, JetBlue | 3 | stale |
+| 19 | **$532** | 50 partial | $437 | $95 | MCO->GUA / GUA->MCO | 2026-12-07 -> 2026-12-26 | 19 | American, Delta | 3 | stale |
+| 20 | **$532** | 50 partial | $437 | $95 | JAX->GUA / GUA->MCO | 2026-12-07 -> 2026-12-26 | 19 | American, Delta | 3 | stale |
+| 21 | **$532** | 25 cheapest-only | $424 | $108 | IAH->GUA / GUA->MCO | 2027-01-07 -> 2027-01-29 | 22 | Frontier, United | 2 | stale |
+| 22 | **$532** | 25 cheapest-only | $424 | $108 | IAH->GUA / GUA->MCO | 2027-01-09 -> 2027-02-05 | 27 | Frontier, Delta | 2 | stale |
+| 23 | **$533** | 35 partial | $438 | $95 | TPA->GUA / GUA->EWR | 2026-12-05 -> 2026-12-24 | 19 | American, United | 3 | stale |
+| 24 | **$643** | 65 close | $543 | $100 | DEN<->GUA | 2026-11-17 -> 2026-12-08 | 21 | American | 1 | stale |
+| 25 | **$662** | 65 close | $522 | $140 | DEN<->GUA | 2026-11-14 -> 2026-12-05 | 21 | Air Canada, Avianca | 2 | guess |
+| 26 | **$700** | 100 ideal | $600 | $100 | DEN<->GUA | 2026-12-07 -> 2026-12-28 | 21 | American | 2 | stale |
