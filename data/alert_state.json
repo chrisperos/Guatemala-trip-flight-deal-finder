@@ -1,5 +1,5 @@
 {
-  "best_alerted_usd": 391,
+  "best_alerted_usd": 352,
   "history": [
     {
       "at": "2026-08-09T17:10:42+00:00",
@@ -7,6 +7,13 @@
       "route": "FLL<->GUA",
       "depart_date": "2027-01-13",
       "return_date": "2027-02-02"
+    },
+    {
+      "at": "2026-11-10T00:48:00+00:00",
+      "all_in_usd": 352,
+      "route": "ATL<->GUA",
+      "depart_date": "2027-01-07",
+      "return_date": "2027-01-28"
     }
   ]
 }
