@@ -2,21 +2,21 @@
   "ABQ->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "ABQ->GUA:roundtrip": {
-    "empty": 252,
+    "empty": 255,
     "last_empty": "2026-11-10",
     "ok": 0
   },
   "ALB->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "ALB->GUA:roundtrip": {
-    "empty": 260,
-    "last_empty": "2026-11-08",
+    "empty": 266,
+    "last_empty": "2026-11-10",
     "ok": 0
   },
   "ATL->GUA": {
@@ -27,12 +27,12 @@
   "ATL->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "ATL->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "AUS->GUA": {
     "empty": 0,
@@ -42,84 +42,84 @@
   "AUS->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "AUS->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "BDL->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "BDL->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "BHM->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "BHM->GUA:roundtrip": {
-    "empty": 284,
+    "empty": 287,
     "last_empty": "2026-11-10",
     "ok": 0
   },
   "BNA->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "BNA->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "BOI->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "BOI->GUA:roundtrip": {
-    "empty": 260,
+    "empty": 269,
     "last_empty": "2026-11-10",
     "ok": 0
   },
   "BOS->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "BOS->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "BUF->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "BUF->GUA:roundtrip": {
     "empty": 0,
     "last_empty": "2026-09-09",
     "last_ok": "2026-11-10",
-    "ok": 61
+    "ok": 62
   },
   "BUR->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "BUR->GUA:roundtrip": {
     "empty": 0,
     "last_empty": "2026-08-08",
     "last_ok": "2026-11-10",
-    "ok": 73
+    "ok": 74
   },
   "BWI->GUA": {
     "empty": 0,
@@ -129,63 +129,63 @@
   "BWI->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "BWI->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "CHS->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "CHS->GUA:roundtrip": {
-    "empty": 273,
+    "empty": 274,
     "last_empty": "2026-11-10",
     "ok": 0
   },
   "CLE->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "CLE->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "CLT->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "CLT->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "CMH->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "CMH->GUA:roundtrip": {
     "empty": 0,
     "last_empty": "2026-08-08",
     "last_ok": "2026-11-10",
-    "ok": 73
+    "ok": 74
   },
   "CVG->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "CVG->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "DAL->GUA": {
     "empty": 0,
@@ -195,33 +195,33 @@
   "DAL->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "DAL->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "DAY->GUA:oneway": {
     "empty": 0,
     "last_empty": "2026-08-08",
     "last_ok": "2026-11-10",
-    "ok": 73
+    "ok": 74
   },
   "DAY->GUA:roundtrip": {
-    "empty": 240,
+    "empty": 241,
     "last_empty": "2026-11-10",
     "ok": 0
   },
   "DCA->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "DCA->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "DEN->GUA": {
     "empty": 71,
@@ -229,14 +229,14 @@
     "ok": 0
   },
   "DEN->GUA:oneway": {
-    "empty": 6301,
+    "empty": 6368,
     "last_empty": "2026-11-10",
     "ok": 0
   },
   "DEN->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "DFW->GUA": {
     "empty": 0,
@@ -246,40 +246,40 @@
   "DFW->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "DFW->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "DSM->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "DSM->GUA:roundtrip": {
-    "empty": 256,
+    "empty": 257,
     "last_empty": "2026-11-10",
     "ok": 0
   },
   "DTW->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "DTW->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "ELP->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "ELP->GUA:roundtrip": {
-    "empty": 257,
+    "empty": 259,
     "last_empty": "2026-11-10",
     "ok": 0
   },
@@ -291,20 +291,20 @@
   "EWR->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "EWR->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "FAT->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "FAT->GUA:roundtrip": {
-    "empty": 279,
+    "empty": 282,
     "last_empty": "2026-11-10",
     "ok": 0
   },
@@ -316,37 +316,37 @@
   "FLL->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "FLL->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "GRR->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GRR->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GSO->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GSO->GUA:roundtrip": {
-    "empty": 276,
+    "empty": 280,
     "last_empty": "2026-11-10",
     "ok": 0
   },
   "GSP->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GSP->GUA:roundtrip": {
     "empty": 283,
@@ -356,13 +356,13 @@
   "GUA->ABQ:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->ALB:oneway": {
     "empty": 0,
     "last_empty": "2026-08-29",
     "last_ok": "2026-11-10",
-    "ok": 72
+    "ok": 73
   },
   "GUA->ATL": {
     "empty": 0,
@@ -372,7 +372,7 @@
   "GUA->ATL:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->AUS": {
     "empty": 0,
@@ -382,43 +382,43 @@
   "GUA->AUS:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->BDL:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->BHM:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->BNA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->BOI:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->BOS:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->BUF:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->BUR:oneway": {
     "empty": 0,
     "last_empty": "2026-10-02",
     "last_ok": "2026-11-10",
-    "ok": 73
+    "ok": 74
   },
   "GUA->BWI": {
     "empty": 0,
@@ -428,32 +428,32 @@
   "GUA->BWI:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->CHS:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->CLE:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->CLT:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->CMH:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->CVG:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->DAL": {
     "empty": 0,
@@ -463,18 +463,18 @@
   "GUA->DAL:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->DAY:oneway": {
     "empty": 0,
     "last_empty": "2026-09-04",
     "last_ok": "2026-11-10",
-    "ok": 66
+    "ok": 67
   },
   "GUA->DCA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->DEN": {
     "empty": 0,
@@ -484,7 +484,7 @@
   "GUA->DEN:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->DFW": {
     "empty": 0,
@@ -494,23 +494,23 @@
   "GUA->DFW:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->DSM:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->DTW:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->ELP:oneway": {
     "empty": 0,
     "last_empty": "2026-08-30",
     "last_ok": "2026-11-10",
-    "ok": 71
+    "ok": 72
   },
   "GUA->EWR": {
     "empty": 0,
@@ -520,12 +520,12 @@
   "GUA->EWR:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->FAT:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->FLL": {
     "empty": 0,
@@ -535,22 +535,22 @@
   "GUA->FLL:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->GRR:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->GSO:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->GSP:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->HOU": {
     "empty": 0,
@@ -560,12 +560,12 @@
   "GUA->HOU:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->HSV:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->IAD": {
     "empty": 0,
@@ -575,7 +575,7 @@
   "GUA->IAD:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->IAH": {
     "empty": 0,
@@ -585,17 +585,17 @@
   "GUA->IAH:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->IND:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->JAX:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->JFK": {
     "empty": 0,
@@ -605,7 +605,7 @@
   "GUA->JFK:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->LAS": {
     "empty": 0,
@@ -615,7 +615,7 @@
   "GUA->LAS:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->LAX": {
     "empty": 0,
@@ -625,33 +625,33 @@
   "GUA->LAX:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->LEX:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->LGA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->LGB:oneway": {
     "empty": 0,
     "last_empty": "2026-10-01",
     "last_ok": "2026-11-10",
-    "ok": 39
+    "ok": 40
   },
   "GUA->LIT:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->MCI:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->MCO": {
     "empty": 0,
@@ -662,7 +662,7 @@
     "empty": 0,
     "last_empty": "2026-08-08",
     "last_ok": "2026-11-10",
-    "ok": 95
+    "ok": 96
   },
   "GUA->MDW": {
     "empty": 0,
@@ -672,18 +672,18 @@
   "GUA->MDW:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->MEM:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->MHT:oneway": {
     "empty": 0,
     "last_empty": "2026-11-04",
     "last_ok": "2026-11-10",
-    "ok": 5
+    "ok": 6
   },
   "GUA->MIA": {
     "empty": 0,
@@ -693,17 +693,17 @@
   "GUA->MIA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->MKE:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->MSP:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->MSY": {
     "empty": 0,
@@ -713,12 +713,12 @@
   "GUA->MSY:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->MYR:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->OAK": {
     "empty": 0,
@@ -728,17 +728,17 @@
   "GUA->OAK:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->OKC:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->OMA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->ONT": {
     "empty": 0,
@@ -748,7 +748,7 @@
   "GUA->ONT:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->ORD": {
     "empty": 0,
@@ -758,12 +758,12 @@
   "GUA->ORD:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->ORF:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->PBI": {
     "empty": 0,
@@ -771,7 +771,7 @@
     "ok": 5
   },
   "GUA->PBI:oneway": {
-    "empty": 6408,
+    "empty": 6480,
     "last_empty": "2026-11-10",
     "last_ok": "2026-08-11",
     "ok": 7
@@ -779,7 +779,7 @@
   "GUA->PDX:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->PHL": {
     "empty": 0,
@@ -789,7 +789,7 @@
   "GUA->PHL:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->PHX": {
     "empty": 0,
@@ -799,42 +799,42 @@
   "GUA->PHX:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->PIT:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->PNS:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->PVD:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->RDU:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->RIC:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->RNO:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->ROC:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->RSW": {
     "empty": 82,
@@ -845,7 +845,7 @@
     "empty": 0,
     "last_empty": "2026-08-18",
     "last_ok": "2026-11-10",
-    "ok": 82
+    "ok": 83
   },
   "GUA->SAN": {
     "empty": 0,
@@ -855,7 +855,7 @@
   "GUA->SAN:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->SAT": {
     "empty": 0,
@@ -865,22 +865,22 @@
   "GUA->SAT:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->SAV:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->SDF:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->SEA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->SFO": {
     "empty": 0,
@@ -890,7 +890,7 @@
   "GUA->SFO:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->SJC": {
     "empty": 0,
@@ -900,38 +900,38 @@
   "GUA->SJC:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->SLC:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->SMF:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->SNA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->SRQ:oneway": {
     "empty": 0,
     "last_empty": "2026-09-26",
     "last_ok": "2026-11-10",
-    "ok": 42
+    "ok": 43
   },
   "GUA->STL:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->SYR:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->TPA": {
     "empty": 0,
@@ -941,28 +941,28 @@
   "GUA->TPA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "GUA->TUL:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->TUS:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->TYS:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "GUA->VPS:oneway": {
     "empty": 0,
     "last_empty": "2026-10-10",
     "last_ok": "2026-11-10",
-    "ok": 29
+    "ok": 30
   },
   "HOU->GUA": {
     "empty": 0,
@@ -972,17 +972,17 @@
   "HOU->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "HOU->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "HSV->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "HSV->GUA:roundtrip": {
     "empty": 292,
@@ -997,13 +997,13 @@
   "IAD->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "IAD->GUA:roundtrip": {
     "empty": 0,
     "last_empty": "2026-08-16",
     "last_ok": "2026-11-10",
-    "ok": 92
+    "ok": 93
   },
   "IAH->GUA": {
     "empty": 0,
@@ -1013,31 +1013,31 @@
   "IAH->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "IAH->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "IND->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "IND->GUA:roundtrip": {
     "empty": 0,
     "last_empty": "2026-08-08",
     "last_ok": "2026-11-10",
-    "ok": 73
+    "ok": 74
   },
   "JAX->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "JAX->GUA:roundtrip": {
-    "empty": 275,
+    "empty": 277,
     "last_empty": "2026-11-10",
     "ok": 0
   },
@@ -1049,12 +1049,12 @@
   "JFK->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "JFK->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "LAS->GUA": {
     "empty": 0,
@@ -1064,13 +1064,13 @@
   "LAS->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "LAS->GUA:roundtrip": {
     "empty": 0,
     "last_empty": "2026-08-16",
     "last_ok": "2026-11-10",
-    "ok": 93
+    "ok": 94
   },
   "LAX->GUA": {
     "empty": 0,
@@ -1080,63 +1080,63 @@
   "LAX->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "LAX->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "LEX->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "LEX->GUA:roundtrip": {
-    "empty": 256,
+    "empty": 260,
     "last_empty": "2026-11-10",
     "ok": 0
   },
   "LGA->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "LGA->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "LGB->GUA:oneway": {
     "empty": 0,
     "last_empty": "2026-09-24",
     "last_ok": "2026-11-10",
-    "ok": 46
+    "ok": 47
   },
   "LGB->GUA:roundtrip": {
-    "empty": 279,
+    "empty": 282,
     "last_empty": "2026-11-10",
     "ok": 0
   },
   "LIT->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "LIT->GUA:roundtrip": {
-    "empty": 273,
+    "empty": 274,
     "last_empty": "2026-11-10",
     "ok": 0
   },
   "MCI->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "MCI->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "MCO->GUA": {
     "empty": 0,
@@ -1146,12 +1146,12 @@
   "MCO->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "MCO->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "MDW->GUA": {
     "empty": 0,
@@ -1161,21 +1161,21 @@
   "MDW->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "MDW->GUA:roundtrip": {
     "empty": 0,
     "last_empty": "2026-08-16",
     "last_ok": "2026-11-10",
-    "ok": 93
+    "ok": 94
   },
   "MEM->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "MEM->GUA:roundtrip": {
-    "empty": 256,
+    "empty": 257,
     "last_empty": "2026-11-10",
     "ok": 0
   },
@@ -1183,10 +1183,10 @@
     "empty": 0,
     "last_empty": "2026-10-24",
     "last_ok": "2026-11-10",
-    "ok": 16
+    "ok": 17
   },
   "MHT->GUA:roundtrip": {
-    "empty": 285,
+    "empty": 287,
     "last_empty": "2026-11-10",
     "ok": 0
   },
@@ -1198,20 +1198,20 @@
   "MIA->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "MIA->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "MKE->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "MKE->GUA:roundtrip": {
-    "empty": 1541,
+    "empty": 1608,
     "last_empty": "2026-11-10",
     "last_ok": "2026-10-17",
     "ok": 1
@@ -1219,12 +1219,12 @@
   "MSP->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "MSP->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "MSY->GUA": {
     "empty": 0,
@@ -1235,21 +1235,21 @@
     "empty": 0,
     "last_empty": "2026-08-16",
     "last_ok": "2026-11-10",
-    "ok": 95
+    "ok": 96
   },
   "MSY->GUA:roundtrip": {
     "empty": 0,
     "last_empty": "2026-08-16",
     "last_ok": "2026-11-10",
-    "ok": 93
+    "ok": 94
   },
   "MYR->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "MYR->GUA:roundtrip": {
-    "empty": 244,
+    "empty": 245,
     "last_empty": "2026-11-10",
     "ok": 0
   },
@@ -1261,33 +1261,33 @@
   "OAK->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "OAK->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "OKC->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "OKC->GUA:roundtrip": {
     "empty": 0,
     "last_empty": "2026-08-08",
     "last_ok": "2026-11-10",
-    "ok": 73
+    "ok": 74
   },
   "OMA->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "OMA->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "ONT->GUA": {
     "empty": 0,
@@ -1297,12 +1297,12 @@
   "ONT->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "ONT->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "ORD->GUA": {
     "empty": 0,
@@ -1312,22 +1312,22 @@
   "ORD->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "ORD->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "ORF->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "ORF->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "PBI->GUA": {
     "empty": 74,
@@ -1335,24 +1335,24 @@
     "ok": 0
   },
   "PBI->GUA:oneway": {
-    "empty": 311,
+    "empty": 313,
     "last_empty": "2026-11-10",
     "ok": 0
   },
   "PBI->GUA:roundtrip": {
-    "empty": 330,
+    "empty": 334,
     "last_empty": "2026-11-10",
     "ok": 0
   },
   "PDX->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "PDX->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "PHL->GUA": {
     "empty": 0,
@@ -1362,12 +1362,12 @@
   "PHL->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "PHL->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "PHX->GUA": {
     "empty": 0,
@@ -1377,81 +1377,81 @@
   "PHX->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "PHX->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "PIT->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "PIT->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "PNS->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "PNS->GUA:roundtrip": {
     "empty": 0,
     "last_empty": "2026-10-19",
     "last_ok": "2026-11-10",
-    "ok": 21
+    "ok": 22
   },
   "PVD->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "PVD->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "RDU->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "RDU->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "RIC->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "RIC->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "RNO->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "RNO->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "ROC->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "ROC->GUA:roundtrip": {
-    "empty": 252,
+    "empty": 254,
     "last_empty": "2026-11-10",
     "ok": 0
   },
@@ -1464,10 +1464,10 @@
   "RSW->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "RSW->GUA:roundtrip": {
-    "empty": 314,
+    "empty": 318,
     "last_empty": "2026-11-10",
     "ok": 0
   },
@@ -1479,12 +1479,12 @@
   "SAN->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "SAN->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "SAT->GUA": {
     "empty": 0,
@@ -1494,42 +1494,42 @@
   "SAT->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "SAT->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "SAV->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "SAV->GUA:roundtrip": {
-    "empty": 248,
+    "empty": 249,
     "last_empty": "2026-11-10",
     "ok": 0
   },
   "SDF->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "SDF->GUA:roundtrip": {
-    "empty": 279,
+    "empty": 280,
     "last_empty": "2026-11-10",
     "ok": 0
   },
   "SEA->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "SEA->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "SFO->GUA": {
     "empty": 0,
@@ -1539,12 +1539,12 @@
   "SFO->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "SFO->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "SJC->GUA": {
     "empty": 0,
@@ -1554,41 +1554,41 @@
   "SJC->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "SJC->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "SLC->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "SLC->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "SMF->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "SMF->GUA:roundtrip": {
     "empty": 0,
     "last_empty": "2026-08-08",
     "last_ok": "2026-11-10",
-    "ok": 73
+    "ok": 74
   },
   "SNA->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "SNA->GUA:roundtrip": {
-    "empty": 303,
+    "empty": 306,
     "last_empty": "2026-11-10",
     "ok": 0
   },
@@ -1596,30 +1596,30 @@
     "empty": 0,
     "last_empty": "2026-09-19",
     "last_ok": "2026-11-10",
-    "ok": 51
+    "ok": 52
   },
   "SRQ->GUA:roundtrip": {
-    "empty": 256,
+    "empty": 259,
     "last_empty": "2026-11-10",
     "ok": 0
   },
   "STL->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "STL->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "SYR->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "SYR->GUA:roundtrip": {
-    "empty": 67,
+    "empty": 134,
     "last_empty": "2026-11-10",
     "last_ok": "2026-11-08",
     "ok": 11
@@ -1632,40 +1632,40 @@
   "TPA->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 96
+    "ok": 97
   },
   "TPA->GUA:roundtrip": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 94
+    "ok": 95
   },
   "TUL->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "TUL->GUA:roundtrip": {
-    "empty": 288,
+    "empty": 291,
     "last_empty": "2026-11-10",
     "ok": 0
   },
   "TUS->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "TUS->GUA:roundtrip": {
-    "empty": 271,
+    "empty": 274,
     "last_empty": "2026-11-10",
     "ok": 0
   },
   "TYS->GUA:oneway": {
     "empty": 0,
     "last_ok": "2026-11-10",
-    "ok": 74
+    "ok": 75
   },
   "TYS->GUA:roundtrip": {
-    "empty": 260,
+    "empty": 262,
     "last_empty": "2026-11-10",
     "ok": 0
   },
@@ -1673,10 +1673,10 @@
     "empty": 0,
     "last_empty": "2026-09-22",
     "last_ok": "2026-11-10",
-    "ok": 48
+    "ok": 49
   },
   "VPS->GUA:roundtrip": {
-    "empty": 257,
+    "empty": 262,
     "last_empty": "2026-11-10",
     "ok": 0
   }
