@@ -1,34 +1,34 @@
 # Guatemala flight scan
 
-58,308 trip combinations across 90 US airports, 2026-11-18T00:02:29+00:00 UTC.
+48,888 trip combinations across 90 US airports, 2026-11-18T23:26:58+00:00 UTC.
 
 All-in = Google Flights fare + ESTIMATED checked bag. Rows marked `guess` use a pessimistic placeholder and need verifying.
 
 | # | All-in | Match | Fare | Bag | Route | Dates | Days | Airlines | Stops | Bag est |
 |--:|-------:|------:|-----:|----:|-------|-------|-----:|----------|------:|---------|
-| 1 | **$414** | 15 cheapest-only | $288 | $126 | MCO->GUA / GUA->ATL | 2027-01-10 -> 2027-02-01 | 22 | Frontier | 2 | stale |
-| 2 | **$421** | 0 cheapest-only | $295 | $126 | ATL<->GUA | 2027-01-09 -> 2027-01-29 | 20 | Frontier | 1 | stale |
-| 3 | **$425** | 15 cheapest-only | $299 | $126 | TPA->GUA / GUA->ATL | 2027-01-05 -> 2027-02-01 | 27 | Frontier | 2 | stale |
-| 4 | **$425** | 25 cheapest-only | $299 | $126 | IAH->GUA / GUA->ATL | 2027-01-08 -> 2027-02-01 | 24 | Frontier | 2 | stale |
-| 5 | **$425** | 15 cheapest-only | $299 | $126 | FLL->GUA / GUA->ATL | 2027-01-10 -> 2027-02-01 | 22 | Frontier | 2 | stale |
-| 6 | **$425** | 25 cheapest-only | $299 | $126 | IAH->GUA / GUA->ATL | 2027-01-10 -> 2027-02-01 | 22 | Frontier | 2 | stale |
-| 7 | **$425** | 15 cheapest-only | $299 | $126 | TPA->GUA / GUA->ATL | 2027-01-10 -> 2027-02-01 | 22 | Frontier | 2 | stale |
-| 8 | **$425** | 15 cheapest-only | $299 | $126 | TPA->GUA / GUA->ATL | 2027-01-07 -> 2027-02-01 | 25 | Frontier | 2 | stale |
-| 9 | **$427** | 0 cheapest-only | $314 | $113 | MSY->GUA / GUA->ATL | 2027-01-12 -> 2027-02-01 | 20 | American, Frontier | 3 | stale |
-| 10 | **$436** | 34 cheapest-only | $310 | $126 | IAH<->GUA | 2027-01-08 -> 2027-02-03 | 26 | Frontier | 1 | stale |
-| 11 | **$438** | 15 cheapest-only | $312 | $126 | ATL<->GUA | 2027-01-08 -> 2027-01-29 | 21 | Frontier | 1 | stale |
-| 12 | **$438** | 34 cheapest-only | $312 | $126 | DFW<->GUA | 2027-01-11 -> 2027-02-01 | 21 | Frontier | 1 | stale |
-| 13 | **$442** | 15 cheapest-only | $334 | $108 | MCO->GUA / GUA->MSY | 2027-01-10 -> 2027-02-01 | 22 | Frontier, United | 2 | stale |
-| 14 | **$443** | 34 cheapest-only | $317 | $126 | DFW<->GUA | 2027-01-06 -> 2027-02-01 | 26 | Frontier | 1 | stale |
-| 15 | **$455** | 0 cheapest-only | $360 | $95 | MSY->GUA / GUA->MSY | 2027-01-12 -> 2027-02-01 | 20 | American, United | 3 | stale |
-| 16 | **$458** | 34 cheapest-only | $332 | $126 | IAH->GUA / GUA->DFW | 2027-01-08 -> 2027-01-29 | 21 | Frontier | 2 | stale |
-| 17 | **$460** | 15 cheapest-only | $360 | $100 | MSY<->GUA | 2027-01-11 -> 2027-02-01 | 21 | American | 2 | stale |
-| 18 | **$462** | 25 cheapest-only | $354 | $108 | DFW->GUA / GUA->MSY | 2027-01-10 -> 2027-02-01 | 22 | Frontier, United | 2 | stale |
-| 19 | **$463** | 15 cheapest-only | $373 | $90 | TPA<->GUA | 2027-01-01 -> 2027-01-26 | 25 | United | 1 | stale |
-| 20 | **$491** | 15 cheapest-only | $431 | $60 | BOS<->GUA | 2027-01-13 -> 2027-02-03 | 21 | COPA | 1 | stale |
-| 21 | **$508** | 15 cheapest-only | $400 | $108 | MCO->GUA / GUA->PHL | 2027-01-10 -> 2027-02-04 | 25 | Frontier, Delta | 2 | stale |
-| 22 | **$517** | 50 partial | $417 | $100 | TPA<->GUA | 2026-12-03 -> 2026-12-24 | 21 | Avianca | 1 | stale |
-| 23 | **$521** | 15 cheapest-only | $426 | $95 | MSY->GUA / GUA->PHL | 2027-01-12 -> 2027-02-04 | 23 | American, Delta | 3 | stale |
-| 24 | **$529** | 50 partial | $403 | $126 | DEN<->GUA | 2027-01-08 -> 2027-01-29 | 21 | Frontier | 1 | stale |
-| 25 | **$534** | 45 partial | $426 | $108 | IAH->GUA / GUA->MSY | 2026-12-04 -> 2026-12-23 | 19 | Frontier, United | 2 | stale |
-| 26 | **$725** | 100 ideal | $599 | $126 | DEN<->GUA | 2026-12-05 -> 2026-12-26 | 21 | Frontier | 1 | stale |
+| 1 | **$385** | 15 cheapest-only | $259 | $126 | MCO<->GUA | 2027-01-10 -> 2027-02-01 | 22 | Frontier | 1 | stale |
+| 2 | **$389** | 15 cheapest-only | $289 | $100 | MCO<->GUA | 2027-01-14 -> 2027-02-05 | 22 | American | 2 | stale |
+| 3 | **$404** | 15 cheapest-only | $278 | $126 | RDU->GUA / GUA->ATL | 2027-01-08 -> 2027-02-01 | 24 | Frontier | 2 | stale |
+| 4 | **$405** | 15 cheapest-only | $279 | $126 | TPA->GUA / GUA->ATL | 2027-01-05 -> 2027-02-01 | 27 | Frontier | 2 | stale |
+| 5 | **$405** | 15 cheapest-only | $279 | $126 | TPA->GUA / GUA->ATL | 2027-01-07 -> 2027-02-01 | 25 | Frontier | 2 | stale |
+| 6 | **$405** | 15 cheapest-only | $279 | $126 | MCO->GUA / GUA->ATL | 2027-01-10 -> 2027-02-01 | 22 | Frontier | 2 | stale |
+| 7 | **$416** | 15 cheapest-only | $290 | $126 | MCO<->GUA | 2027-01-08 -> 2027-02-03 | 26 | Frontier | 1 | stale |
+| 8 | **$424** | 15 cheapest-only | $298 | $126 | MCO<->GUA | 2027-01-08 -> 2027-01-29 | 21 | Frontier | 1 | stale |
+| 9 | **$427** | 15 cheapest-only | $314 | $113 | JAX->GUA / GUA->ATL | 2027-01-11 -> 2027-02-01 | 21 | American, Frontier | 3 | stale |
+| 10 | **$432** | 0 cheapest-only | $324 | $108 | RDU->GUA / GUA->MSY | 2027-01-08 -> 2027-01-27 | 19 | Frontier, United | 2 | stale |
+| 11 | **$447** | 34 cheapest-only | $321 | $126 | DFW<->GUA | 2027-01-08 -> 2027-02-05 | 28 | Frontier | 1 | stale |
+| 12 | **$452** | 34 cheapest-only | $326 | $126 | DFW<->GUA | 2027-01-08 -> 2027-02-03 | 26 | Frontier | 1 | stale |
+| 13 | **$455** | 15 cheapest-only | $360 | $95 | JAX->GUA / GUA->MSY | 2027-01-11 -> 2027-02-01 | 21 | American, United | 3 | stale |
+| 14 | **$462** | 10 cheapest-only | $354 | $108 | DFW->GUA / GUA->MSY | 2027-01-07 -> 2027-01-26 | 19 | Frontier, United | 2 | stale |
+| 15 | **$464** | 15 cheapest-only | $374 | $90 | TPA->GUA / GUA->MSY | 2027-01-01 -> 2027-01-25 | 24 | United | 2 | stale |
+| 16 | **$498** | 15 cheapest-only | $390 | $108 | RDU->GUA / GUA->PHL | 2027-01-08 -> 2027-02-03 | 26 | Frontier, Delta | 2 | stale |
+| 17 | **$505** | 15 cheapest-only | $405 | $100 | MCO<->GUA | 2027-01-15 -> 2027-02-05 | 21 | Avianca | 1 | stale |
+| 18 | **$521** | 15 cheapest-only | $426 | $95 | JAX->GUA / GUA->PHL | 2027-01-11 -> 2027-02-03 | 23 | American, Delta | 3 | stale |
+| 19 | **$533** | 15 cheapest-only | $443 | $90 | TPA->GUA / GUA->MCO | 2027-01-01 -> 2027-01-27 | 26 | United, Delta | 2 | stale |
+| 20 | **$553** | 35 partial | $427 | $126 | ATL->GUA / GUA->MSY | 2026-12-02 -> 2026-12-21 | 19 | Frontier | 2 | stale |
+| 21 | **$553** | 50 partial | $427 | $126 | ATL->GUA / GUA->MSY | 2026-12-02 -> 2026-12-23 | 21 | Frontier | 2 | stale |
+| 22 | **$553** | 50 partial | $427 | $126 | ATL->GUA / GUA->MSY | 2026-12-02 -> 2026-12-24 | 22 | Frontier | 2 | stale |
+| 23 | **$569** | 35 partial | $443 | $126 | CMH->GUA / GUA->MSY | 2026-12-04 -> 2026-12-23 | 19 | Frontier | 2 | stale |
+| 24 | **$569** | 35 partial | $443 | $126 | CMH->GUA / GUA->MSY | 2026-12-04 -> 2026-12-24 | 20 | Frontier | 2 | stale |
+| 25 | **$623** | 65 close | $533 | $90 | DEN<->GUA | 2026-11-26 -> 2026-12-17 | 21 | United | 1 | stale |
+| 26 | **$867** | 100 ideal | $777 | $90 | DEN<->GUA | 2026-12-07 -> 2026-12-28 | 21 | United | 1 | stale |
